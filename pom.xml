@@ -49,6 +49,12 @@
 			<artifactId>geojson-jackson</artifactId>
 			<version>1.14</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.graphhopper/graphhopper-core -->
+		<dependency>
+			<groupId>com.graphhopper</groupId>
+			<artifactId>graphhopper-core</artifactId>
+			<version>4.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
