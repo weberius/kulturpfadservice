@@ -6,6 +6,7 @@ import de.illilli.kulturpfade.services.PoiService;
 import de.illilli.kulturpfade.services.RouteService;
 import de.illilli.kulturpfade.services.RoutingService;
 import org.geojson.FeatureCollection;
+import org.geojson.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +18,10 @@ public class KulturpfadeController {
     private PoiService poiService;
 
     @GetMapping("/poi")
-    public String getAllPois() {
+    public String getAllPois() throws Exception {
 
-        String allPois = poiService.getData();
-        return allPois;
+        FeatureCollection featureCollection = new PoiService().getFeatureCollection();
+        return new ObjectMapper().writeValueAsString(featureCollection);
 
     }
 

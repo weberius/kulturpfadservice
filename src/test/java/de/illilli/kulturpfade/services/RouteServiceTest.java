@@ -9,10 +9,14 @@ public class RouteServiceTest {
 
     @Test
     void testSomePois() throws Exception {
+
         RouteService service = new RouteService();
         FeatureCollection featureCollection = service.getFeatureCollection();
-
         String msg = new ObjectMapper().writeValueAsString(featureCollection);
-        System.out.println("##### " + msg);
+
+        System.out.println(msg);
+        System.out.println("distance = " + service.getDistance());
+        System.out.println("time     = " + service.getTime());
+
     }
 }

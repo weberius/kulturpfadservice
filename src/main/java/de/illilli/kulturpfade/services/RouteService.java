@@ -24,6 +24,8 @@ import java.util.Map;
 public class RouteService {
 
     private FeatureCollection featureCollection = new FeatureCollection();
+    int distance = 0;
+    int time = 0;
 
     public RouteService() throws FileNotFoundException, RoutingNotAvailabteException {
 
@@ -67,10 +69,21 @@ public class RouteService {
             feature.setProperties(properties);
             // add feature to featurecollection
             featureCollection.add(feature);
+
+            this.distance = this.distance +  routingData.getDistance();
+            this.time = this.time + routingData.getTime();
         }
     }
 
     public FeatureCollection getFeatureCollection() {
         return featureCollection;
+    }
+
+    public int getDistance() {
+        return this.distance;
+    }
+
+    public int getTime() {
+        return this.time;
     }
 }
