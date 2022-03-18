@@ -68,4 +68,14 @@ public class RoutingData {
     public int hashCode() {
         return Objects.hash(fromLat, fromLon, toLat, toLon);
     }
+
+    @Override
+    public String toString() {
+        return "RoutingData{" +
+                "points=" + points +
+                ", distance=" + distance +
+                ", time=" + time +
+                ", instructionList=" + instructionList +
+                '}';
+    }
 }

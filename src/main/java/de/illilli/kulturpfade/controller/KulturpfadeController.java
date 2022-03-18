@@ -25,7 +25,7 @@ public class KulturpfadeController {
     }
 
     @GetMapping("/route")
-    public String getAllRoutes() throws JsonProcessingException {
+    public String getAllRoutes() throws Exception {
         FeatureCollection featureCollection = new RouteService().getFeatureCollection();
         return new ObjectMapper().writeValueAsString(featureCollection);
     }
