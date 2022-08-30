@@ -1,9 +1,11 @@
 # kulturpfadservice
 
-Der KulturpfadeService bietet die Möglichkeit zu einer Liste an Orten eine Verbindung zu erstellen.
+## Idee
 
-Es kann ein Dokument mit Points Of interests übergeben werden. Hieraus werden Linien (ZZZ) erstellt, die in Form von geojson Objekten zur Verfügung gestellt werden.
+Der KulturpfadeService bietet die Möglichkeit, aus einer Liste an Orten eine Fussgänger-Route zwischen diesen Orten zu erstellen.
 
-Die Software ist als eigenständiger Service gedacht, die es erlaubt, die notwendigen Daten für die Bereitstellung einer Oberfläche ohne Backend zu generieren.
+Hierfür wird ein Dokument mit Orten übergeben. Anhand der Adressen werden die notwendigen x/y-Koordinaten erstellt. Mit Hilfe der Routing-Software Graphhopper wird hieraus eine Route erstellt, die in Form von geojson-Objekten zur Verfügung gestellt werden. Die Orte enhalten eine eindeutige ID, die es ermöglicht, weitergehende Informationen mit dem Ort zu verknüpfen. 
 
-Der Service wird eine einfache Weboberfläche enthalten, um das Ergebnis kontrollieren zu können.
+Die Software ist als Service gedacht, die es erlaubt, die notwendigen Daten für die Bereitstellung einer Oberfläche ohne Backend zu generieren. 
+
+Der Service soll eine einfache Weboberfläche enthalten, um das Ergebnis einfach kontrollieren zu können.
