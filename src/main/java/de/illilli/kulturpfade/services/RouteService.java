@@ -1,18 +1,16 @@
 package de.illilli.kulturpfade.services;
 
 import com.graphhopper.util.shapes.GHPoint;
-import com.opencsv.bean.CsvToBeanBuilder;
 import de.illilli.kulturpfade.model.POI;
 import de.illilli.kulturpfade.model.RoutingData;
-import liquibase.pro.packaged.R;
+import de.illilli.kulturpfade.repository.JdbcRepository;
+import de.illilli.kulturpfade.repository.PoiInitialValuesRepository;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.LineString;
 import org.geojson.LngLatAlt;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -27,17 +25,11 @@ public class RouteService {
     int distance = 0;
     int time = 0;
 
-    public RouteService() throws FileNotFoundException, RoutingNotAvailabteException {
+    public RouteService() throws RoutingNotAvailabteException {
 
         // 1. get Data
-        String fileName = this.getClass().getResource("/kulturpfad-muelheim.csv").getFile();
-
-        List<POI> beans = new CsvToBeanBuilder(new FileReader(fileName))
-                .withSeparator(';')
-                .withType(POI.class)
-                .build()
-                .parse();
-
+        JdbcRepository<POI> repo = new PoiInitialValuesRepository();
+        List<POI> beans = repo.find();
         // 2. add routing
         RoutingService routingService = new  RoutingService();
         POI fromPOI = null;
