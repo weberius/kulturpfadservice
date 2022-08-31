@@ -64,6 +64,27 @@
 
 	<build>
 		<plugins>
+			<!-- download OSM-Data -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>download-osm</id>
+						<phase>process-test-classes</phase>
+						<goals>
+							<goal>download-single</goal>
+						</goals>
+						<configuration>
+							<url>https://download.geofabrik.de</url>
+							<fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</fromFile>
+							<toDir>${project.build.directory}/classes</toDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
@@ -92,27 +113,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<!-- download OSM-Data -->
-			<plugin>
-				<groupId>com.googlecode.maven-download-plugin</groupId>
-				<artifactId>download-maven-plugin</artifactId>
-				<version>1.6.8</version>
-				<executions>
-					<execution>
-						<!-- the wget goal actually binds itself to this phase by default -->
-						<phase>process-resources</phase>
-						<goals>
-							<goal>wget</goal>
-						</goals>
-						<configuration>
-							<url>https://download.geofabrik.de/europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</url>
-							<outputFileName>koeln-regbez-latest.osm.pbf</outputFileName>
-							<!-- default target location, just to demonstrate the parameter -->
-							<outputDirectory>${project.build.directory}</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
