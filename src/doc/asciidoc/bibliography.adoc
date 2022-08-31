@@ -1,7 +1,0 @@
-[bibliography]
-== Bibliography
-
-* [[[building-a-restful-web-service-with-spring-and-java-based-configuration, 1]]] https://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration[Build a REST API with Spring and Java Config], baeldung.com, 08.03.2022
-* [[[spring-boot-annotations, 2]]] https://springhow.com/spring-boot-annotations[Spring Boot Annotations | Beginners guide] springhow.com, 09.06.2021
-* [[[learn-how-to-use-junit-5-to-test-your-spring-boot, 3]]] https://dzone.com/articles/learn-how-to-use-junit-5-to-test-your-spring-boot[Learn How to Use JUnit 5 to Test Your Spring Boot Apps]
-* [[[how-to-read-and-parse-csv-file-in-java, 4]]] https://mkyong.com/java/how-to-read-and-parse-csv-file-in-java/[How to read and parse CSV file in Java], mykong.com
