@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.geojson.FeatureCollection;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class RouteServiceTest {
 
     @Test
@@ -14,9 +16,11 @@ public class RouteServiceTest {
         FeatureCollection featureCollection = service.getFeatureCollection();
         String msg = new ObjectMapper().writeValueAsString(featureCollection);
 
-        System.out.println(msg);
-        System.out.println("distance = " + service.getDistance());
-        System.out.println("time     = " + service.getTime());
+        int distance = 4646;
+        assertEquals(distance, service.getDistance());
+
+        int time = 59;
+        assertEquals(time, service.getTime());
 
     }
 }
