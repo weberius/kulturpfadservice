@@ -1,0 +1,24 @@
+[interface]
+== Interfaces
+
+Es werden folgende Interfaces unterstützt
+
+=== poi
+
+```
+get /serivce/poi
+accept application/json
+returns geojson
+```
+
+Diese Schnittstelle liefert alle gespeicherten Points Of Interest (POI).
+
+=== route
+
+```
+get /serivce/route
+accept application/json
+returns geojson
+```
+
+Diese Schnittstelle liefert die Route aus den übergebenen Points of Interest (POI).
