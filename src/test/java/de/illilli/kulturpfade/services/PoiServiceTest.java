@@ -3,6 +3,7 @@ package de.illilli.kulturpfade.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.geojson.FeatureCollection;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PoiServiceTest {
 
@@ -12,6 +13,6 @@ public class PoiServiceTest {
         FeatureCollection featureCollection = service.getFeatureCollection();
 
         String msg = new ObjectMapper().writeValueAsString(featureCollection);
-        System.out.println("##### " + msg);
+        assertTrue(msg.contains("FeatureCollection"));
     }
 }
