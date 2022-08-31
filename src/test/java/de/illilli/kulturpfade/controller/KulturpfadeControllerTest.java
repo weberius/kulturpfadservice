@@ -38,8 +38,8 @@ public class KulturpfadeControllerTest {
                         .andExpect(status().isOk())
                         .andReturn();
 
-        String expected = "success";
-        String actual = result.getResponse().getContentAsString();
+        int expected = 200;
+        int actual = result.getResponse().getStatus();
         assertEquals(expected, actual);
     }
 
@@ -53,11 +53,9 @@ public class KulturpfadeControllerTest {
                         .andExpect(status().isOk())
                         .andReturn();
 
-        String expected = "success";
-        String actual = result.getResponse().getContentAsString();
-
-        logger.info("#### " + actual);
-//        assertEquals(expected, actual);
+        int expected = 200;
+        int actual = result.getResponse().getStatus();
+        assertEquals(expected, actual);
     }
 
 }
