@@ -61,9 +61,7 @@ var config = {
 	},
 
 	"activeTool": "filterWidget", // options are identify/coordinates/queryWidget
-	"basemaps": ['OpenStreetMap', 'esriGray', 'esriDarkGray', 'esriStreets', "Aerial"],
-	"bing_key": "enter your Bing Maps key",
-	"mapboxKey": "enter your MapBox key",
+	"basemaps": ['OpenStreetMap', 'esriGray', 'esriDarkGray', 'esriStreets'],
 	// "defaultIcon": {
 	// 	"imagePath": "https://leafletjs.com/examples/custom-icons/",
 	// 	"iconUrl": "leaf-green.png",
