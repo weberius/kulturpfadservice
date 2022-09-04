@@ -36,7 +36,8 @@ var bootleaf = {
     {"id": "OpenStreetMap", "type": "tiled", "label": "OpenStreetMap", "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"},
     {"id": "Aerial", "type": "bing", "label": "Bing satellite"},
     {"id": "AerialWithLabels", "type": "bing", "label": "Bing satellite labels"},
-    {"id": "Road", "type": "bing", "label": "Bing streets"}
+    {"id": "Road", "type": "bing", "label": "Bing streets"},
+    {"id": "Cologne", "type": "tiled", "label": "Digitale Orthophotos Einzelkacheln Land NRW", "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop"},
   ]
 };
 

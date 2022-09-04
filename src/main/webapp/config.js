@@ -5,8 +5,8 @@ var config = {
 	"title": "Bootleaf template map",
 	"start": {
 		// "maxZoom": 16,
-		"center": [38.203,-99.799],
-		"zoom": 4,
+		"center": [50.941357,6.958307],
+		"zoom": 12,
 		"attributionControl": true,
 		"zoomControl": false
 	},
@@ -20,7 +20,7 @@ var config = {
 		},
 		"leafletGeocoder": {
 			//https://github.com/perliedman/leaflet-control-geocoder
-			"collapsed": false,
+			"collapsed": true,
 			"position": "topleft",
 			"placeholder": "Search for a location",
 			"type": "OpenStreetMap", // OpenStreetMap, Google, ArcGIS
@@ -29,7 +29,7 @@ var config = {
 		},
 		"TOC": {
 			//https://leafletjs.com/reference-1.0.2.html#control-layers-option
-			"collapsed": false,
+			"collapsed": true,
 			"uncategorisedLabel": "Layers",
 			"position": "topright",
 			"toggleAll": true
@@ -41,21 +41,27 @@ var config = {
 			"position": "bottomright",
 			"places": [
 				{
-				"latlng": [
-					40.7916, -73.9924
-				],
-				"zoom": 12,
-				"name": "Manhattan",
-				"id": "a148fa354ba3",
-				"editable": true,
-				"removable": true
+                    "latlng": [40.7916, -73.9924],
+                    "zoom": 12,
+                    "name": "Manhattan",
+                    "id": "a148fa354ba3",
+                    "editable": true,
+                    "removable": true
+				},
+				{
+                    "latlng": [50.941357, 6.958307],
+                    "zoom": 12,
+                    "name": "Kölner Dom",
+                    "id": "1",
+                    "editable": true,
+                    "removable": true
 				}
 			]
 		}
 	},
 
 	"activeTool": "filterWidget", // options are identify/coordinates/queryWidget
-	"basemaps": ['esriGray', 'esriDarkGray', 'esriStreets', 'OpenStreetMap', "Aerial"],
+	"basemaps": ['OpenStreetMap', 'esriGray', 'esriDarkGray', 'esriStreets', "Aerial"],
 	"bing_key": "enter your Bing Maps key",
 	"mapboxKey": "enter your MapBox key",
 	// "defaultIcon": {
@@ -97,32 +103,32 @@ var config = {
 	},
 	"layers": [
 	{
-    "id": "theatres",
-    "name": "Theatres",
-    "type": "geoJSON",
-    "cluster": true,
-    "showCoverageOnHover": false,
-    "minZoom": 12,
-    "url": "./data/theatres.geojson",
-    "icon": {
-        "iconUrl": "./img/theater.png",
-        "iconSize": [24,28]
-    },
-    "style": {
-    "stroke": true,
-    "fillColor": "#00FFFF",
-    "fillOpacity": 0.5,
-    "radius": 10,
-    "weight": 0.5,
-    "opacity": 1,
-    "color": '#727272',
-    },
-	  "visible": false,
-	  // "label": {
-	  // 	"name": "NAME",
-	  // 	"minZoom": 14
-	  // }
-	},
+        "id": "poi",
+        "name": "Points Of Interest",
+        "type": "geoJSON",
+        "cluster": true,
+        "showCoverageOnHover": false,
+        "minZoom": 12,
+        "url": "/service/poi",
+        "icon": {
+            "iconUrl": "./img/theater.png",
+            "iconSize": [24,28]
+        },
+        "style": {
+            "stroke": true,
+            "fillColor": "#00FFFF",
+            "fillOpacity": 0.5,
+            "radius": 10,
+            "weight": 0.5,
+            "opacity": 1,
+            "color": '#727272',
+        },
+        "visible": true
+//        "label": {
+//            "name": "NAME",
+//            "minZoom": 14
+//        }
+	}, // poi layer
 	{
     "id": "museums",
     "type": "geoJSON",
