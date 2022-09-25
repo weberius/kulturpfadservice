@@ -15,6 +15,9 @@
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
 		<java.version>11</java.version>
+		<download-osm.url>https://download.geofabrik.de</download-osm.url>
+		<download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
+		<download-osm.toDir>${project.build.directory}/classes</download-osm.toDir>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -33,7 +36,7 @@
 		<dependency>
 			<groupId>org.orbisgis</groupId>
 			<artifactId>h2gis</artifactId>
-			<version>1.5.0</version>
+			<version>2.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,12 +57,12 @@
 		<dependency>
 			<groupId>com.graphhopper</groupId>
 			<artifactId>graphhopper-core</artifactId>
-			<version>4.0</version>
+			<version>6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
-			<version>5.3</version>
+			<version>5.7.0</version>
 		</dependency>
 	</dependencies>
 
@@ -69,7 +72,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>wagon-maven-plugin</artifactId>
-				<version>1.0</version>
+				<version>2.0.2</version>
 				<executions>
 					<execution>
 						<id>download-osm</id>
@@ -78,9 +81,10 @@
 							<goal>download-single</goal>
 						</goals>
 						<configuration>
-							<url>https://download.geofabrik.de</url>
-							<fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</fromFile>
-							<toDir>${project.build.directory}/classes</toDir>
+							<url>${download-osm.url}</url>
+							<fromFile>${download-osm.fromFile}</fromFile>
+							<toDir>${download-osm.toDir}</toDir>
+							<skipIfExists/>
 						</configuration>
 					</execution>
 				</executions>
