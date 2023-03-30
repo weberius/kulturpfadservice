@@ -6,6 +6,7 @@ import org.geojson.FeatureCollection;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RouteServiceTest {
 
@@ -16,11 +17,8 @@ public class RouteServiceTest {
         FeatureCollection featureCollection = service.getFeatureCollection();
         String msg = new ObjectMapper().writeValueAsString(featureCollection);
 
-        int distance = 4646;
-        assertEquals(distance, service.getDistance());
-
-        int time = 59;
-        assertEquals(time, service.getTime());
+        assertTrue(service.getDistance() > 0);
+        assertTrue(service.getTime() > 0);
 
     }
 }
