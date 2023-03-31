@@ -1,4 +1,3 @@
-[interface]
 == Interfaces
 
 Es werden folgende Interfaces unterstützt

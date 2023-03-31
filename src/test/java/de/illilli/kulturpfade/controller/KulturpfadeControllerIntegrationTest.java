@@ -1,7 +1,6 @@
 package de.illilli.kulturpfade.controller;
 
 import de.illilli.kulturpfade.services.PoiService;
-import de.illilli.kulturpfade.services.RoutingService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +20,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = {KulturpfadeController.class, PoiService.class})
 @WebMvcTest
-public class KulturpfadeControllerTest {
+public class KulturpfadeControllerIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(KulturpfadeControllerTest.class);
+    private static Logger logger = LoggerFactory.getLogger(KulturpfadeControllerIntegrationTest.class);
 
     @Autowired
     private MockMvc mockMvc;

@@ -18,9 +18,9 @@ import java.util.List;
  *     Download OpenStreetMap data for this region: Nordrhein-Westfalen</a></p>
  * <p>Liegt die Datei nicht vor, werden alle Tests, die darauf aufbauen übersprungen.</p>
  */
-public class RoutingServiceTest {
+public class RoutingServiceIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(RoutingServiceTest.class);
+    private static Logger logger = LoggerFactory.getLogger(RoutingServiceIntegrationTest.class);
 
     /**
      * Testet das Routing zwischen zwei PUnkten.
