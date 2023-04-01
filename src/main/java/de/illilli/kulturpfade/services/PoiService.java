@@ -34,6 +34,7 @@ public class PoiService {
         List<POI> beans = repo.find();
         // 2. Map to GeoJson
         for (POI poi : beans) {
+
             Feature feature = new Feature();
             Point point = new Point();
             LngLatAlt element = new LngLatAlt(poi.getLon(), poi.getLat());
@@ -43,7 +44,9 @@ public class PoiService {
             properties.put("id", poi.getId());
             properties.put("title", poi.getTitle());
             feature.setProperties(properties);
-            featureCollection.add(feature);
+            if (poi.getTitle() != null && !poi.getTitle().equalsIgnoreCase("null")) {
+                featureCollection.add(feature);
+            }
         }
 
     }

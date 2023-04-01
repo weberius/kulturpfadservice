@@ -2410,8 +2410,9 @@ function showMarker(evt){
 
   bootleaf.map.removeLayer(bootleaf.highlightLayer);
   var coordinates = evt.latlng;
-  var lat = Math.round(coordinates.lat * 1000) / 1000;
-  var lng = Math.round(coordinates.lng * 1000) / 1000;
+  // lat/ lng 6-stellig hinter dem komma
+  var lat = Math.round(coordinates.lat * 1000000) / 1000000;
+  var lng = Math.round(coordinates.lng * 1000000) / 1000000;
 
   var queryJSON = {
       "type": "Feature",
@@ -2420,7 +2421,7 @@ function showMarker(evt){
         "coordinates": [coordinates.lng, coordinates.lat]
       }
   };
-  var message = "<p>lat,lng [" + lat + "," + lng + "]</p>";
+  var message = "<p>lat,lng [" + lat + ";" + lng + "]</p>";
   bootleaf.highlightLayer = L.geoJSON(queryJSON, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng);
