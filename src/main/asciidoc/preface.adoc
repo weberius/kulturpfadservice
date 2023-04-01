@@ -1,10 +1,10 @@
 [preface]
 == Preface
 
-Der KulturpfadeService bietet die Möglichkeit zu einer Liste an Orten eine Verbindung zu erstellen.
+Der KulturpfadService ist eine Software, die zur Planung der digitalen Form der Kulturpfade verwendet werden kann. bietet die Möglichkeit aus einer Liste an Geokoordinaten einen Pfad zu erstellen.
 
-Es kann ein Dokument mit Points Of interests übergeben werden. Hieraus werden Linien (ZZZ) erstellt, die in Form von geojson Objekten zur Verfügung gestellt werden.
+Hierfür wird ein csv-Dokument mit Punkten übergeben. wird eine Linien erstellt, die in Form von geojson Objekten ausgeliefert werden.
 
 Die Software ist als eigenständiger Service gedacht, die es erlaubt, die notwendigen Daten für die Bereitstellung einer Oberfläche ohne Backend zu generieren.
 
-Der Service wird eine einfache Weboberfläche enthalten, um das Ergebnis kontrollieren zu können.
+Der Service enthält eine einfache Weboberfläche, die die Planung erleichtert.

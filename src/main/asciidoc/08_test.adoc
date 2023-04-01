@@ -1,0 +1,60 @@
+== Test
+
+Es werden Unit-Tests und Integrationstests unterschieden. Unit-Tests umfassen die Tests, die keinerlei Backend benötigen. Integrationstests benötigen ein eingebundenes graphhopper. Es sind keine Oberflächen Tests vorgesehen.
+
+
+Die Unit-Tests können mit folgendem Kommando aufgerufen werden:
+
+  mvn test
+
+Die Integrations-Tests werden mit folgendem Kommando aufgerufen:
+
+  mvn integration-test
+
+Hierbei ist zu beachten, dass ein Abzug von OpenStreetMap im Classpath zur Verfügung stehen muss. Sollte die entsprechende `*.pbf` Datei nicht vorhanden sein, wird sie automatisch heruntergeladen. Dadurch kann es zu langen Laufzeiten kommen, wenn die Intergrationstest mit folgendem Befehl aufgerufen werden:
+
+  mvn clean integration-test
+
+Durch den Parameter `clean` wird das temporäre `target` Verzeichnis, und damit auch die `*.pbf` Datei gelöscht.
+
+=== maven
+
+Zu Unterscheidung von Junit-Tests und Integrationstests wird das `maven-surefire-plugin` eingestetzt. Während bei für den 'normalen' Testdurchlauf, also die Junit-Tests, alle Testklassen ausgeschlossen werden, die auf `IntegrationTest` oder `ApplicationTests` enden, werden diese explizit in der `integration-test` phase angesprochen.
+
+.keine Integrationstests
+    <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <configuration>
+            <excludes>
+                <exclude>**/*IntegrationTest</exclude>
+                <exclude>**/*ApplicationTests</exclude>
+            </excludes>
+        </configuration>
+    </plugin>
+
+
+.Integrationstests nur in der phase `integration-test`
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <executions>
+            <execution>
+                <phase>integration-test</phase>
+                <goals>
+                    <goal>test</goal>
+                </goals>
+                <configuration>
+                    <excludes>
+                        <exclude>none</exclude>
+                    </excludes>
+                    <includes>
+                        <include>**/*IntegrationTest</include>
+                        <include>**/*ApplicationTests</include>
+                    </includes>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+
