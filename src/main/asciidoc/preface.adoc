@@ -1,10 +1,12 @@
 [preface]
 == Preface
 
-Der KulturpfadService ist eine Software, die zur Planung der digitalen Form der Kulturpfade verwendet werden kann. bietet die Möglichkeit aus einer Liste an Geokoordinaten einen Pfad zu erstellen.
+Der KulturpfadService ist eine Software, die zur Planung der digitalen Form der Kulturpfade verwendet werden kann. Er bietet die Möglichkeit aus einer Liste von Geokoordinaten einen Pfad zu errechnen.
 
 Hierfür wird ein csv-Dokument mit Punkten übergeben. wird eine Linien erstellt, die in Form von geojson Objekten ausgeliefert werden.
 
 Die Software ist als eigenständiger Service gedacht, die es erlaubt, die notwendigen Daten für die Bereitstellung einer Oberfläche ohne Backend zu generieren.
 
 Der Service enthält eine einfache Weboberfläche, die die Planung erleichtert.
+
+Die Berechnung der Route erfolgt mit Hilfe von graphhopper.

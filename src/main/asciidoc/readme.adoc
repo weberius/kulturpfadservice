@@ -19,6 +19,8 @@ include::preface.adoc[]
 
 include::01_interfaces.adoc[]
 
+include::02_data.adoc[]
+
 include::08_test.adoc[]
 
 include::bibliography.adoc[]

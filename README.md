@@ -23,7 +23,9 @@ Der Prozess 'mvn clean install' kann je nach Internetverbindung mehr als 5 Minut
 * http://localhost:8080/service/poi
 * http://localhost:8080/service/route
 
+Unter http://localhost:8080 kann eine Weboberfläche aufgerufen werden, die bei der Erstellung der Routen und Pois unterstützt.
+
 ## Dokumentation
 
-Die Dokumentation des Service wird unter src/main/asciidoc fortgeführt. Mit folgendem Befehl wird unter 'target/generated-docs' html-Code erzeugt, der mit 'main.html' aufgerufen werden kann.
-
+Die Dokumentation des Service wird unter src/main/asciidoc fortgeführt. 
+Die Dokumentation wird im Rahmen der `prepare-package` Phase in html überführt und steht unter [docs/readme.html](docs/readme.html) zur Verfügung.

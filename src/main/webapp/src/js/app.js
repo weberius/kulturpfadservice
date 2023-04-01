@@ -554,6 +554,7 @@ function loadMap(){
         "position": "topleft"
       }
       bootleaf.bookmarkControl = new L.Control.Bookmarks(bookmarkOptions).addTo(bootleaf.map);
+      config.controls.bookmarks.places = config.layers[0];
 
       // Check if each bookmark has already been added via local storage, to avoid duplicate bookmarks
       localBookmarks = $.map( bootleaf.bookmarkControl._data || [], function( val, i ) {

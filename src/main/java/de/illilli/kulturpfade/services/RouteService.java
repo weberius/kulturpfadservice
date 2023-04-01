@@ -45,7 +45,7 @@ public class RouteService {
                 fromPOI = beans.get(i);
             } else {
                 toPOI = beans.get(i);
-                routingService.setPoints(fromPOI.getLat(), fromPOI.getLon(), toPOI.getLat(), toPOI.getLon());
+                routingService.setPoints(fromPOI.getLat(), fromPOI.getLng(), toPOI.getLat(), toPOI.getLng());
                 fromPOI = beans.get(i);
             }
         }

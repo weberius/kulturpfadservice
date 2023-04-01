@@ -10,13 +10,18 @@ public class POI {
     private String id;
 
     @CsvBindByPosition(position = 1)
-    private String title;
+    private String name;
 
     @CsvBindByPosition(position = 2)
     private double lat;
 
     @CsvBindByPosition(position = 3)
-    private double lon;
+    private double lng;
+
+    @CsvBindByPosition(position = 4)
+    private int zoom;
+
+    private double[] latlng;
 
     public String getId() {
         return id;
@@ -26,12 +31,12 @@ public class POI {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getLat() {
@@ -42,12 +47,12 @@ public class POI {
         this.lat = lat;
     }
 
-    public double getLon() {
-        return lon;
+    public double getLng() {
+        return lng;
     }
 
-    public void setLon(double lon) {
-        this.lon = lon;
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
     @Override
@@ -55,21 +60,21 @@ public class POI {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         POI poi = (POI) o;
-        return Double.compare(poi.lat, lat) == 0 && Double.compare(poi.lon, lon) == 0 && Objects.equals(id, poi.id) && Objects.equals(title, poi.title);
+        return Double.compare(poi.lat, lat) == 0 && Double.compare(poi.lng, lng) == 0 && Objects.equals(id, poi.id) && Objects.equals(name, poi.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, lat, lon);
+        return Objects.hash(id, name, lat, lng);
     }
 
     @Override
     public String toString() {
         return "POI{" +
                 "id='" + id + '\'' +
-                ", title='" + title + '\'' +
+                ", title='" + name + '\'' +
                 ", lat=" + lat +
-                ", lon=" + lon +
+                ", lon=" + lng +
                 '}';
     }
 }

@@ -37,14 +37,14 @@ public class PoiService {
 
             Feature feature = new Feature();
             Point point = new Point();
-            LngLatAlt element = new LngLatAlt(poi.getLon(), poi.getLat());
+            LngLatAlt element = new LngLatAlt(poi.getLng(), poi.getLat());
             point.setCoordinates(element);
             feature.setGeometry(point);
             Map<String, Object> properties = new Hashtable<String, Object>();
             properties.put("id", poi.getId());
-            properties.put("title", poi.getTitle());
+            properties.put("name", poi.getName());
             feature.setProperties(properties);
-            if (poi.getTitle() != null && !poi.getTitle().equalsIgnoreCase("null")) {
+            if (poi.getName() != null && !poi.getName().equalsIgnoreCase("null")) {
                 featureCollection.add(feature);
             }
         }
