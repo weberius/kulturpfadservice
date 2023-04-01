@@ -2,16 +2,17 @@ var config = {
 	"requireArcGISLogin": false, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL
 
-	"title": "Bootleaf template map",
+	"title": "Kulturpfade Köln",
 	"start": {
 		// "maxZoom": 16,
-		"center": [50.96156,7.00488],
-		"zoom": 16,
+		"center": [50.941,6.958],
+		"zoom": 13,
 		"attributionControl": true,
-		"zoomControl": false
+		"zoomControl": false,
+		"data": "data"
 	},
 	"about": {
-		"title": "Bootleaf application template",
+		"title": "Kulturpfade",
 		"contents": "<p>This is an open-source version of the excellent <a href='https://github.com/bmcbride/bootleaf'>Bootleaf map </a>started by Bryan McBride.</p><p>It's designed for rapid web map development. See <a href='https://github.com/iag-geo/bootleaf'>https://github.com/iag-geo/bootleaf</a> for more information.</p><p>Chage this message in the config file</p>"
 	},
 	"controls": {
@@ -42,26 +43,26 @@ var config = {
 			"places": [
 				{
                     "latlng": [40.7916, -73.9924],
-                    "zoom": 12,
+                    "zoom": 16,
                     "name": "Manhattan",
                     "id": "a148fa354ba3",
-                    "editable": true,
-                    "removable": true
+                    "editable": false,
+                    "removable": false
 				},
 				{
                     "latlng": [50.941357, 6.958307],
-                    "zoom": 12,
+                    "zoom": 16,
                     "name": "Kölner Dom",
                     "id": "1",
-                    "editable": true,
-                    "removable": true
+                    "editable": false,
+                    "removable": false
 				}
 			]
 		}
 	},
 
 	"activeTool": "filterWidget", // options are identify/coordinates/queryWidget
-	"basemaps": ['OpenStreetMap', 'esriGray', 'esriDarkGray', 'esriStreets'],
+	"basemaps": ['esriGray', 'esriDarkGray', 'esriStreets', 'OpenStreetMap'],
 	// "defaultIcon": {
 	// 	"imagePath": "https://leafletjs.com/examples/custom-icons/",
 	// 	"iconUrl": "leaf-green.png",
@@ -107,10 +108,10 @@ var config = {
         "cluster": true,
         "showCoverageOnHover": false,
         "minZoom": 12,
-        "url": "/service/poi",
+        "url": "/service/poi/data",
         "icon": {
-            "iconUrl": "./img/theater.png",
-            "iconSize": [24,28]
+            "iconUrl": "./img/reddot.png",
+            "iconSize": [24,24]
         },
         "style": {
             "stroke": true,
@@ -131,7 +132,7 @@ var config = {
         "id": "routes",
         "name": "Routen",
         "type": "geoJSON",
-        "url": "/service/route",
+        "url": "/service/route/data",
         "style": {
             "stroke": true,
         },

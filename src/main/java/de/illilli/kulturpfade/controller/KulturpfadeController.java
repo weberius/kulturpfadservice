@@ -7,6 +7,8 @@ import de.illilli.kulturpfade.services.RouteService;
 import de.illilli.kulturpfade.services.RoutingService;
 import org.geojson.FeatureCollection;
 import org.geojson.Point;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,20 +16,23 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/service")
 public class KulturpfadeController {
 
+    private static Logger logger = LoggerFactory.getLogger(KulturpfadeController.class);
+
     @Autowired
     private PoiService poiService;
 
-    @GetMapping("/poi")
-    public String getAllPois() throws Exception {
+    @GetMapping("/poi/{data}")
+    public String getAllPois(@PathVariable String data) throws Exception {
 
-        FeatureCollection featureCollection = new PoiService().getFeatureCollection();
+        FeatureCollection featureCollection = new PoiService(data).getFeatureCollection();
         return new ObjectMapper().writeValueAsString(featureCollection);
 
     }
 
-    @GetMapping("/route")
-    public String getAllRoutes() throws Exception {
-        FeatureCollection featureCollection = new RouteService().getFeatureCollection();
+    @GetMapping("/route/{data}")
+    public String getAllRoutes(@PathVariable String data) throws Exception {
+
+        FeatureCollection featureCollection = new RouteService(data).getFeatureCollection();
         return new ObjectMapper().writeValueAsString(featureCollection);
     }
 

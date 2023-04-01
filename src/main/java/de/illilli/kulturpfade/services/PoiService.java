@@ -1,9 +1,8 @@
 package de.illilli.kulturpfade.services;
 
-import com.opencsv.bean.CsvToBeanBuilder;
 import de.illilli.kulturpfade.model.POI;
 import de.illilli.kulturpfade.repository.JdbcRepository;
-import de.illilli.kulturpfade.repository.PoiInitialValuesRepository;
+import de.illilli.kulturpfade.repository.PoiValuesRepository;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.LngLatAlt;
@@ -22,11 +21,16 @@ public class PoiService {
     private static Logger logger = LoggerFactory.getLogger(RoutingService.class);
 
     private FeatureCollection featureCollection = new FeatureCollection();
+    private JdbcRepository<POI> repo = new PoiValuesRepository("");
 
     public PoiService() {
+        this("data");
+    }
 
-        // 1. get Data
-        JdbcRepository<POI> repo = new PoiInitialValuesRepository();
+    public PoiService(String data) {
+
+            // 1. get Data
+        repo = new PoiValuesRepository(data);
         List<POI> beans = repo.find();
         // 2. Map to GeoJson
         for (POI poi : beans) {

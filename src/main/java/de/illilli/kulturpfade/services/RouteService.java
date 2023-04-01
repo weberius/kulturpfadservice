@@ -4,7 +4,7 @@ import com.graphhopper.util.shapes.GHPoint;
 import de.illilli.kulturpfade.model.POI;
 import de.illilli.kulturpfade.model.RoutingData;
 import de.illilli.kulturpfade.repository.JdbcRepository;
-import de.illilli.kulturpfade.repository.PoiInitialValuesRepository;
+import de.illilli.kulturpfade.repository.PoiValuesRepository;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.LineString;
@@ -22,13 +22,19 @@ import java.util.Map;
 public class RouteService {
 
     private FeatureCollection featureCollection = new FeatureCollection();
+    private JdbcRepository<POI> repo = new PoiValuesRepository("");
     int distance = 0;
     int time = 0;
 
     public RouteService() throws RoutingNotAvailabteException {
+        this("data");
+    }
+
+    public RouteService(String data) throws RoutingNotAvailabteException {
 
         // 1. get Data
-        JdbcRepository<POI> repo = new PoiInitialValuesRepository();
+        repo = new PoiValuesRepository(data);
+
         List<POI> beans = repo.find();
         // 2. add routing
         RoutingService routingService = new  RoutingService();
@@ -44,8 +50,8 @@ public class RouteService {
             }
         }
         // 3. Map to GeoJson
-        List<RoutingData> data = routingService.getData();
-        for (RoutingData routingData : data) {
+        List<RoutingData> dataList = routingService.getData();
+        for (RoutingData routingData : dataList) {
             Feature feature = new Feature();
             // set line
             LineString lineString = new LineString();
