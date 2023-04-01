@@ -74,6 +74,7 @@
 				<configuration>
 					<excludes>
 						<exclude>**/*IntegrationTest</exclude>
+						<exclude>**/*ApplicationTests</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -94,6 +95,7 @@
 							</excludes>
 							<includes>
 								<include>**/*IntegrationTest</include>
+								<include>**/*ApplicationTests</include>
 							</includes>
 						</configuration>
 					</execution>
