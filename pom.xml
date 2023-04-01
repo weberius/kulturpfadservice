@@ -148,6 +148,7 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<!-- copy doku to /docs -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
