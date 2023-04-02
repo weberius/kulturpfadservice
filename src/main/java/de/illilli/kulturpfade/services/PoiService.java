@@ -33,6 +33,7 @@ public class PoiService {
         repo = new PoiValuesRepository(data);
         List<POI> beans = repo.find();
         // 2. Map to GeoJson
+        int i = 1;
         for (POI poi : beans) {
 
             Feature feature = new Feature();
@@ -42,7 +43,13 @@ public class PoiService {
             feature.setGeometry(point);
             Map<String, Object> properties = new Hashtable<String, Object>();
             properties.put("id", poi.getId());
-            properties.put("name", poi.getName());
+            String name = poi.getName();
+
+            if (poi.getId() != null && poi.getId().length() >= 15) {
+                name = poi.getId().substring(12) + " " + poi.getName();
+            }
+
+            properties.put("name", name);
             feature.setProperties(properties);
             if (poi.getName() != null && !poi.getName().equalsIgnoreCase("null")) {
                 featureCollection.add(feature);

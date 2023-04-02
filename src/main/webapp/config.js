@@ -103,15 +103,15 @@ var config = {
 	"layers": [
 	{
         "id": "poi",
-        "name": "Points Of Interest",
+        "name": "Kulturdenkm&auml;ler",
         "type": "geoJSON",
-        "cluster": true,
+        "cluster": false,
         "showCoverageOnHover": false,
-        "minZoom": 12,
+        "minZoom": 14,
         "url": "/service/poi/data",
         "icon": {
             "iconUrl": "./img/reddot.png",
-            "iconSize": [24,24]
+            "iconSize": [18,18]
         },
         "style": {
             "stroke": true,
@@ -122,11 +122,11 @@ var config = {
             "opacity": 1,
             "color": '#727272',
         },
-        "visible": true
-//        "label": {
-//            "name": "NAME",
-//            "minZoom": 14
-//        }
+        "visible": true,
+        "label": {
+            "name": "name",
+            "minZoom": 15
+        }
 	}, // poi layer
     {
         "id": "routes",
