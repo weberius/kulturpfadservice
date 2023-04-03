@@ -135,9 +135,10 @@ var config = {
         "url": "/service/route/data",
         "style": {
             "stroke": true,
+            "weight": 5.5
         },
         "radius": 10,
-        "weight": 2,
+        "weight": 4,
         "opacity": 1,
         "color": "#FF0000"
     } //route layer
