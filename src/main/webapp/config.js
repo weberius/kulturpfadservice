@@ -108,7 +108,7 @@ var config = {
         "cluster": false,
         "showCoverageOnHover": false,
         "minZoom": 14,
-        "url": "/service/poi/data",
+        "url": "/service/poi/data.geojson",
         "icon": {
             "iconUrl": "./img/reddot.png",
             "iconSize": [18,18]
@@ -132,7 +132,7 @@ var config = {
         "id": "routes",
         "name": "Routen",
         "type": "geoJSON",
-        "url": "/service/route/data",
+        "url": "/service/route/data.geojson",
         "style": {
             "stroke": true,
             "weight": 5.5

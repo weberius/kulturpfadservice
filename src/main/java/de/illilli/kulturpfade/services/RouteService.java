@@ -26,15 +26,18 @@ public class RouteService {
     int distance = 0;
     int time = 0;
 
+    /**
+     * service defalut value;
+     * @throws RoutingNotAvailabteException
+     */
     public RouteService() throws RoutingNotAvailabteException {
         this("data");
     }
 
-    public RouteService(String data) throws RoutingNotAvailabteException {
+    public RouteService(String id) throws RoutingNotAvailabteException {
 
         // 1. get Data
-        repo = new PoiValuesRepository(data);
-
+        repo = new PoiValuesRepository(id);
         List<POI> beans = repo.find();
         // 2. add routing
         RoutingService routingService = new  RoutingService();

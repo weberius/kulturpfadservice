@@ -31,7 +31,7 @@ public class KulturpfadeControllerIntegrationTest {
     public void testGetPois() throws Exception {
 
         MvcResult result =
-                mockMvc.perform(MockMvcRequestBuilders.get("/service/poi/data")
+                mockMvc.perform(MockMvcRequestBuilders.get("/service/poi/data.geojson")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
@@ -46,7 +46,7 @@ public class KulturpfadeControllerIntegrationTest {
     public void testGetRoutes() throws Exception {
 
         MvcResult result =
-                mockMvc.perform(MockMvcRequestBuilders.get("/service/route/data")
+                mockMvc.perform(MockMvcRequestBuilders.get("/service/route/data.geojson")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())

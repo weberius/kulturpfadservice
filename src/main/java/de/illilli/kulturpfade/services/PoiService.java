@@ -27,10 +27,10 @@ public class PoiService {
         this("data");
     }
 
-    public PoiService(String data) {
+    public PoiService(String id) {
 
-            // 1. get Data
-        repo = new PoiValuesRepository(data);
+        // 1. get Data
+        repo = new PoiValuesRepository(id);
         List<POI> beans = repo.find();
         // 2. Map to GeoJson
         int i = 1;

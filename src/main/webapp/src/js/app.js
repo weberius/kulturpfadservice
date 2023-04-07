@@ -74,9 +74,9 @@ function loadMap(){
 
 
   // Get parameters passed via the URL. Overwrite the config file's start parameter
-  if(getURLParameter("data") !== null) {
-    config.layers[0].url = "/service/poi/" + getURLParameter("data");
-    config.layers[1].url = "/service/route/" + getURLParameter("data");
+  if(getURLParameter("id") !== null) {
+    config.layers[0].url = "/service/poi/" + getURLParameter("id") + ".geojson";
+    config.layers[1].url = "/service/route/" + getURLParameter("id") + ".geojson";
   }
   if(getURLParameter("lat") !== null && getURLParameter("lng") !== null){
     config.start.center = [getURLParameter("lat"), getURLParameter("lng")]

@@ -21,19 +21,26 @@ public class KulturpfadeController {
     @Autowired
     private PoiService poiService;
 
-    @GetMapping("/poi/{data}")
-    public String getAllPois(@PathVariable String data) throws Exception {
+    @GetMapping("/poi/{id}")
+    public String getAllPois(@PathVariable String id) throws Exception {
 
-        FeatureCollection featureCollection = new PoiService(data).getFeatureCollection();
+        // getting '<id>.geojosn'; need '<id>'
+        id = id.substring(0, id.indexOf('.'));
+
+        FeatureCollection featureCollection = new PoiService(id).getFeatureCollection();
         return new ObjectMapper().writeValueAsString(featureCollection);
 
     }
 
-    @GetMapping("/route/{data}")
-    public String getAllRoutes(@PathVariable String data) throws Exception {
+    @GetMapping("/route/{id}")
+    public String getAllRoutes(@PathVariable String id) throws Exception {
 
-        FeatureCollection featureCollection = new RouteService(data).getFeatureCollection();
+        // getting '<id>.geojosn'; need '<id>'
+        id = id.substring(0, id.indexOf('.'));
+
+        FeatureCollection featureCollection = new RouteService(id).getFeatureCollection();
         return new ObjectMapper().writeValueAsString(featureCollection);
+
     }
 
 }

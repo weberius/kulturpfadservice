@@ -19,13 +19,12 @@ public class PoiValuesRepository implements JdbcRepository<POI> {
     private static Logger logger = LoggerFactory.getLogger(RoutingService.class);
     private String data;
 
-    public PoiValuesRepository(String data) {
-        if (data == null || data.isEmpty()) {
+    public PoiValuesRepository(String id) {
+        if (id == null || id.isEmpty()) {
             this.data = "/data.csv";
         } else {
-            this.data = "/" + data + ".csv";
+            this.data = "/" + id + ".csv";
         }
-
     }
 
     @Override
