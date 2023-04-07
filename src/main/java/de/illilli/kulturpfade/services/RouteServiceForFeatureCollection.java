@@ -12,14 +12,13 @@ import org.geojson.LngLatAlt;
 import org.springframework.stereotype.Component;
 
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Diese Klasse ermittelt für gegebene POIs Routen und stellte diese Daten als FeatureCollectcion zur Verfügung.
  */
 @Component
-public class RouteService {
+public class RouteServiceForFeatureCollection {
 
     private FeatureCollection featureCollection = new FeatureCollection();
     private JdbcRepository<POI> repo = new PoiValuesRepository("");
@@ -28,33 +27,16 @@ public class RouteService {
 
     /**
      * service defalut value;
-     * @throws RoutingNotAvailabteException
+     * @throws RoutingNotAvailableException
      */
-    public RouteService() throws RoutingNotAvailabteException {
+    public RouteServiceForFeatureCollection() throws RoutingNotAvailableException {
         this("data");
     }
 
-    public RouteService(String id) throws RoutingNotAvailabteException {
+    public RouteServiceForFeatureCollection(String id) throws RoutingNotAvailableException {
 
-        // 1. get Data
-        repo = new PoiValuesRepository(id);
-        List<POI> beans = repo.find();
-        // 2. add routing
-        RoutingService routingService = new  RoutingService();
-        POI fromPOI = null;
-        POI toPOI = null;
-        for (int i = 0; i < beans.size(); i++) {
-            if (i == 0) {
-                fromPOI = beans.get(i);
-            } else {
-                toPOI = beans.get(i);
-                routingService.setPoints(fromPOI.getLat(), fromPOI.getLng(), toPOI.getLat(), toPOI.getLng());
-                fromPOI = beans.get(i);
-            }
-        }
-        // 3. Map to GeoJson
-        List<RoutingData> dataList = routingService.getData();
-        for (RoutingData routingData : dataList) {
+        // preparing for FeatureCollection
+        for (RoutingData routingData : new PrepareRouting(id).getData()) {
             Feature feature = new Feature();
             // set line
             LineString lineString = new LineString();
@@ -69,8 +51,7 @@ public class RouteService {
             properties.put("time", routingData.getTime());
             feature.setProperties(properties);
             // add feature to featurecollection
-            featureCollection.add(feature);
-
+            this.featureCollection.add(feature);
             this.distance = this.distance +  routingData.getDistance();
             this.time = this.time + routingData.getTime();
         }

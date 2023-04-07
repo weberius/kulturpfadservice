@@ -6,12 +6,9 @@ import com.graphhopper.GraphHopper;
 import com.graphhopper.ResponsePath;
 import com.graphhopper.config.CHProfile;
 import com.graphhopper.config.Profile;
-import com.graphhopper.util.*;
-import com.graphhopper.util.shapes.GHPoint;
 import de.illilli.kulturpfade.model.RoutingData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -45,11 +42,11 @@ public class RoutingService {
     private GraphHopper hopper;
     private List<RoutingData> data;
 
-    public RoutingService() throws RoutingNotAvailabteException {
+    public RoutingService() throws RoutingNotAvailableException {
         this(OSMDATANAME);
     }
 
-    public RoutingService(String osmDataName) throws RoutingNotAvailabteException {
+    public RoutingService(String osmDataName) throws RoutingNotAvailableException {
 
         String osmFileLocation;
         String graphhopperLocation;
@@ -60,7 +57,7 @@ public class RoutingService {
             osmFileLocation = this.getClass().getResource(fileName).getFile();
             graphhopperLocation = new File(osmFileLocation).getParent() + dirName;
         } catch (NullPointerException e) {
-            throw new RoutingNotAvailabteException("fileName '" + fileName + "' not found");
+            throw new RoutingNotAvailableException("fileName '" + fileName + "' not found");
         }
 
         // initialize Data
@@ -91,7 +88,7 @@ public class RoutingService {
      * @param toLat
      * @param toLon
      */
-    public void setPoints(double fromLat, double fromLon, double toLat, double toLon) throws RoutingNotAvailabteException{
+    public void setPoints(double fromLat, double fromLon, double toLat, double toLon) throws RoutingNotAvailableException {
 
         RoutingData routingData = new RoutingData(fromLat, fromLon, toLat, toLon);
         if (data.contains(routingData)) {
@@ -110,7 +107,7 @@ public class RoutingService {
         try {
             path = rsp.getBest();
         } catch(RuntimeException e) {
-            throw new RoutingNotAvailabteException(e.getMessage());
+            throw new RoutingNotAvailableException(e.getMessage());
         }
 
         // points, distance in meters and time in millis of the full path

@@ -1,12 +1,10 @@
 package de.illilli.kulturpfade.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.illilli.kulturpfade.services.PoiService;
-import de.illilli.kulturpfade.services.RouteService;
-import de.illilli.kulturpfade.services.RoutingService;
+import de.illilli.kulturpfade.services.RouteServiceForDataTable;
+import de.illilli.kulturpfade.services.RouteServiceForFeatureCollection;
 import org.geojson.FeatureCollection;
-import org.geojson.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +36,19 @@ public class KulturpfadeController {
         // getting '<id>.geojosn'; need '<id>'
         id = id.substring(0, id.indexOf('.'));
 
-        FeatureCollection featureCollection = new RouteService(id).getFeatureCollection();
+        FeatureCollection featureCollection = new RouteServiceForFeatureCollection(id).getFeatureCollection();
         return new ObjectMapper().writeValueAsString(featureCollection);
+
+    }
+
+    @GetMapping("/data/{id}")
+    public String getData(@PathVariable String id) throws Exception {
+
+        // getting '<id>.json'; need '<id>'
+        id = id.substring(0, id.indexOf('.'));
+
+        RouteServiceForDataTable service = new RouteServiceForDataTable(id);
+        return new ObjectMapper().writeValueAsString(service.getData());
 
     }
 

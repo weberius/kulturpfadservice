@@ -1,6 +1,5 @@
 package de.illilli.kulturpfade.services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.geojson.FeatureCollection;
 import org.junit.jupiter.api.Test;
@@ -8,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RouteServiceIntegrationTest {
+public class RouteServiceForFeatureCollectionTest {
 
     @Test
     void testSomePois() throws Exception {
 
-        RouteService service = new RouteService();
+        RouteServiceForFeatureCollection service = new RouteServiceForFeatureCollection();
         FeatureCollection featureCollection = service.getFeatureCollection();
         String msg = new ObjectMapper().writeValueAsString(featureCollection);
 

@@ -40,7 +40,7 @@ public class RoutingServiceIntegrationTest {
 
             List<RoutingData> data = routing.getData();
             Assertions.assertNotNull(data);
-        } catch (RoutingNotAvailabteException e) {
+        } catch (RoutingNotAvailableException e) {
             logger.error(e.getMessage());
         }
 
@@ -69,7 +69,7 @@ public class RoutingServiceIntegrationTest {
             int actual = routing.getData().size();
 
             Assertions.assertEquals(expected, actual);
-        } catch (RoutingNotAvailabteException e) {
+        } catch (RoutingNotAvailableException e) {
             logger.error(e.getMessage());
         }
     }
@@ -96,7 +96,7 @@ public class RoutingServiceIntegrationTest {
             int actual = routing.getData().size();
 
             Assertions.assertEquals(expected, actual);
-        } catch (RoutingNotAvailabteException e) {
+        } catch (RoutingNotAvailableException e) {
             logger.error(e.getMessage());
         }
     }
@@ -109,7 +109,7 @@ public class RoutingServiceIntegrationTest {
     @Test
     void testFarAway() throws Exception {
 
-        Assertions.assertThrows(RoutingNotAvailabteException.class, () -> {
+        Assertions.assertThrows(RoutingNotAvailableException.class, () -> {
 
             RoutingService routing = new RoutingService();
             double fromLat = 50.962099;
@@ -126,7 +126,7 @@ public class RoutingServiceIntegrationTest {
     void testNoRoutingAvailabe() throws Exception {
 
         String osmDataName = "duesseldorf-regbez-latest";
-        Assertions.assertThrows(RoutingNotAvailabteException.class, () -> {
+        Assertions.assertThrows(RoutingNotAvailableException.class, () -> {
             new RoutingService(osmDataName);
         });
 
