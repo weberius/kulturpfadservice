@@ -64,6 +64,12 @@
 			<artifactId>opencsv</artifactId>
 			<version>5.7.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.jenetics/jpx -->
+		<dependency>
+			<groupId>io.jenetics</groupId>
+			<artifactId>jpx</artifactId>
+			<version>3.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
