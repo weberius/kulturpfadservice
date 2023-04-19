@@ -21,3 +21,23 @@ returns geojson
 ```
 
 Diese Schnittstelle liefert die Route aus den übergebenen Points of Interest (POI).
+
+=== data
+
+```
+get /serivce/data/<key>
+accept application/json
+returns json
+```
+
+Diese Schnittstelle gibt eine json mit den wichtigsten Informationen zum Routing zurück.
+=== gpx
+
+```
+get /serivce/gpx/<key>
+accept application/json
+returns gpx
+```
+
+Diese Schnittstelle gibt die Route als GPX Daten zurück.
+
