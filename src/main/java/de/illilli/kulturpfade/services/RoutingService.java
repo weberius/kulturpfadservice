@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -48,15 +50,28 @@ public class RoutingService {
 
     public RoutingService(String osmDataName) throws RoutingNotAvailableException {
 
-        String osmFileLocation;
-        String graphhopperLocation;
+        String osmFileLocation = "";
+        String graphhopperLocation = "";
+
         String fileName = "/" + osmDataName + ".osm.pbf";
+        String pathName = "/";
         String dirName = "/" + osmDataName + "-cache";
 
         try {
-            osmFileLocation = this.getClass().getResource(fileName).getFile();
-            graphhopperLocation = new File(osmFileLocation).getParent() + dirName;
-        } catch (NullPointerException e) {
+            URL url = this.getClass().getResource(pathName);
+            File directory = new File(url.toURI());
+            File[] files = directory.listFiles();
+            for (File file : files) {
+                if (file.isFile() && file.getName().contains(".osm.pbf")) {
+                    osmFileLocation = pathName + file.getName();
+                    System.out.println("#### osmFileLocation    : " + osmFileLocation);
+                    dirName = file.getName().substring(0, file.getName().length() - 8);
+                    System.out.println("#### dirname            : " + dirName);
+                    graphhopperLocation = new File(osmFileLocation).getParent() + dirName + "-cache";
+                    System.out.println("#### graphhopperLocation: " + graphhopperLocation);
+                }
+            }
+        } catch (NullPointerException | URISyntaxException e) {
             throw new RoutingNotAvailableException("fileName '" + fileName + "' not found");
         }
 
