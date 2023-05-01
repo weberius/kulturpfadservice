@@ -438,6 +438,54 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_daten">Daten</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Es werden unterschiedliche Arten von Daten unterschieden:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OpenStreetMap Daten</p>
+</li>
+<li>
+<p>Daten für das Routing</p>
+</li>
+<li>
+<p>Daten zu Abschnitten und POI</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_openstreetmap_daten">OpenStreetMap Daten</h3>
+<div class="paragraph">
+<p>Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen. Das Kopieren erfolgt während des Bauens der Anwendung. Mit dem initialen Aufruf von <code>mvn clean install</code> wird ein Datenabzug heruntergeladen, der in der pom.xml definiert ist.</p>
+</div>
+<div class="literalblock">
+<div class="title">Beispiel Regierungsbezirk Köln</div>
+<div class="content">
+<pre>&lt;download-osm.fromFile&gt;europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf&lt;/download-osm.fromFile&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Im angegebenen Beispiel werden die Daten für den Regierungsbezirk Köln heruntergeladen</p>
+</div>
+<div class="literalblock">
+<div class="title">Beispiel für Hessen</div>
+<div class="content">
+<pre>&lt;download-osm.fromFile&gt;europe/germany/hessen-latest.osm.pbf&lt;/download-osm.fromFile&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Im Beispiel für Hessen wird ein Abzug für das Bundesland Hessen heruntergeladen.</p>
+</div>
+<div class="paragraph">
+<p>Wenn die Routing-Daten aktualisiert werden sollen, kann dies mit Hilfe von <code>mvn clean install</code> oder <code>mvn clean integration-test</code> erfolgen. <code>mvn clean</code> sorgt dabei dafür, dass das Arbeitsverzeichnis gelöscht wird. <code>mvn install</code> sorgt unter anderem dafür, dass frische Daten von der Geofabrik heruntergeladen werden.</p>
+</div>
+<div class="paragraph">
+<p>Auf der Seite <em>geofabrik.de/europe/germany</em> <a href="#geofabrik">[geofabrik]</a> findet sich einen Auflistung, welche Daten von der Geofabrik bezogen werden können.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_daten_für_das_routing">Daten für das Routing</h3>
+<div class="paragraph">
 <p>Daten werden in Form von csv-Dateien eingelesen. Diese Dateien werden im <code>resources</code> Verzeichnis hinterlegt. Die Daten sollte entsprechend der id aufgebaut sein:</p>
 </div>
 <div class="listingblock">
@@ -544,9 +592,10 @@ b03-t06-s02-0;null;50.936174;6.894329</pre>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-02 14:58:56 +0200
+Last updated 2023-05-01 14:58:39 +0200
 </div>
 </div>
 </body>

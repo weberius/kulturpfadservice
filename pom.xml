@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>de.illilli</groupId>
 	<artifactId>kulturpfade</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.10-SNAPSHOT</version>
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
@@ -128,7 +128,32 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<!-- copy osm to test-classes -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>copy-osm-to-test-classes</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/test-classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>target/classes</directory>
+									<includes>
+										<include>**/*.pbf</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>

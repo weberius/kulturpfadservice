@@ -122,14 +122,4 @@ public class RoutingServiceIntegrationTest {
 
     }
 
-    @Test
-    void testNoRoutingAvailabe() throws Exception {
-
-        String osmDataName = "duesseldorf-regbez-latest";
-        Assertions.assertThrows(RoutingNotAvailableException.class, () -> {
-            new RoutingService(osmDataName);
-        });
-
-    }
-
 }

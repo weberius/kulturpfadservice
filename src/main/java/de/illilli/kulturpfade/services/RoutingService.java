@@ -39,40 +39,36 @@ public class RoutingService {
     public static boolean TURNCOSTS = false;
     public static Locale LOCALE = Locale.GERMAN;
 
-    static String OSMDATANAME = "koeln-regbez-latest";
+    String root = "/";
 
     private GraphHopper hopper;
     private List<RoutingData> data;
 
     public RoutingService() throws RoutingNotAvailableException {
-        this(OSMDATANAME);
-    }
-
-    public RoutingService(String osmDataName) throws RoutingNotAvailableException {
 
         String osmFileLocation = "";
         String graphhopperLocation = "";
 
-        String fileName = "/" + osmDataName + ".osm.pbf";
-        String pathName = "/";
-        String dirName = "/" + osmDataName + "-cache";
-
         try {
-            URL url = this.getClass().getResource(pathName);
-            File directory = new File(url.toURI());
-            File[] files = directory.listFiles();
+            URL url = this.getClass().getResource(root);
+            File[] files = new File(url.toURI()).listFiles();
             for (File file : files) {
+//                System.out.println("### " + new File(root + file.getName()).getAbsolutePath());
                 if (file.isFile() && file.getName().contains(".osm.pbf")) {
-                    osmFileLocation = pathName + file.getName();
-                    System.out.println("#### osmFileLocation    : " + osmFileLocation);
-                    dirName = file.getName().substring(0, file.getName().length() - 8);
-                    System.out.println("#### dirname            : " + dirName);
-                    graphhopperLocation = new File(osmFileLocation).getParent() + dirName + "-cache";
-                    System.out.println("#### graphhopperLocation: " + graphhopperLocation);
+                    osmFileLocation =
+                            file.getParent()
+                                    + root
+                                    + file.getName();
+                    graphhopperLocation =
+                            file.getParent()
+                                    + root
+                                    + file.getName().substring(0, file.getName().length() - 8)
+                                    + "-cache";
+
                 }
             }
         } catch (NullPointerException | URISyntaxException e) {
-            throw new RoutingNotAvailableException("fileName '" + fileName + "' not found");
+            throw new RoutingNotAvailableException("fileName '" + graphhopperLocation + "' not found");
         }
 
         // initialize Data

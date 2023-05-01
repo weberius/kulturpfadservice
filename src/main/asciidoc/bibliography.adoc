@@ -7,3 +7,4 @@
 * [[[how-to-read-and-parse-csv-file-in-java, 4]]] https://mkyong.com/java/how-to-read-and-parse-csv-file-in-java/[How to read and parse CSV file in Java], mykong.com
 * [[[bootleaf, 5]]] https://github.com/iag-geo/bootleaf[BootLeaf], github.com
 * [[[jpx, 6]]] https://github.com/jenetics/jpx[JPX], github.com
+* [[[geofabrik, 7]]] https://download.geofabrik.de/europe/germany.html[Download OSM-Daten], geofabrik.de

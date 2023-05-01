@@ -1,5 +1,32 @@
 == Daten
 
+Es werden unterschiedliche Arten von Daten unterschieden:
+
+* OpenStreetMap Daten
+* Daten für das Routing
+* Daten zu Abschnitten und POI
+
+=== OpenStreetMap Daten
+
+Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen. Das Kopieren erfolgt während des Bauens der Anwendung. Mit dem initialen Aufruf von `mvn clean install` wird ein Datenabzug heruntergeladen, der in der pom.xml definiert ist.
+
+.Beispiel Regierungsbezirk Köln
+  <download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
+
+Im angegebenen Beispiel werden die Daten für den Regierungsbezirk Köln heruntergeladen
+
+.Beispiel für Hessen
+  <download-osm.fromFile>europe/germany/hessen-latest.osm.pbf</download-osm.fromFile>
+
+Im Beispiel für Hessen wird ein Abzug für das Bundesland Hessen heruntergeladen.
+
+Wenn die Routing-Daten aktualisiert werden sollen, kann dies mit Hilfe von `mvn clean install` oder `mvn clean integration-test` erfolgen. `mvn clean` sorgt dabei dafür, dass das Arbeitsverzeichnis gelöscht wird. `mvn install` sorgt unter anderem dafür, dass frische Daten von der Geofabrik heruntergeladen werden.
+
+Auf der Seite _geofabrik.de/europe/germany_ <<geofabrik>> findet sich einen Auflistung, welche Daten von der Geofabrik bezogen werden können.
+
+
+=== Daten für das Routing
+
 Daten werden in Form von csv-Dateien eingelesen. Diese Dateien werden im `resources` Verzeichnis hinterlegt. Die Daten sollte entsprechend der id aufgebaut sein:
 
 .Dateiname

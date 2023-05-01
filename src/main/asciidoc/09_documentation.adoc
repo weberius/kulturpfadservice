@@ -1,0 +1,13 @@
+== Dokumentation
+
+Die Dokumentation wird in adoc unter `/src/main/asciidoc` fortgeführt. Dadurch kann die Dokumentation sowohl in das pdf-Format umgewandelt werden, als auch in das html-Format. Für das Rendern des html-Codes, wird folgender Befehl auf der Kommandozeile ausgeführt:
+
+.Kommando zum Rendern der Dokumentation
+  mvn prepare-package
+
+Um die erstellten html-Daten in das `docs` Verzeichnis zu kopieren, wird folgender Befehl auf der Kommandozeile ausgeführt:
+
+.Kommando zum kopieren der Dokumentation
+  mvn process-resources
+
+Wenn die so erstellten html-Dateien mit eingecheckt werden, wird aktuell die Dokumentation unter https://weberius.github.io/kulturpfadservice/main.html[KulturpfadeService] zur Verfügung gestellt.

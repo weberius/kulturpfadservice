@@ -31,6 +31,7 @@ returns json
 ```
 
 Diese Schnittstelle gibt eine json mit den wichtigsten Informationen zum Routing zurück.
+
 === gpx
 
 ```
