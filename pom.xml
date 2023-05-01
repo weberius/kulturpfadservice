@@ -80,7 +80,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>3.0.0</version>
 				<configuration>
 					<excludes>
 						<exclude>**/*IntegrationTest</exclude>
@@ -92,7 +92,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<phase>integration-test</phase>
@@ -136,7 +136,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.3.1</version>
 				<executions>
 					<execution>
 						<id>copy-osm-to-test-classes</id>
@@ -161,7 +161,7 @@
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>1.5.8</version>
+				<version>2.2.3</version>
 				<executions>
 					<execution>
 						<id>generate-docs</id>
@@ -187,7 +187,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.3.1</version>
 				<executions>
 					<execution>
 						<id>copy-asciidoc-resources</id>
