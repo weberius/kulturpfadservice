@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Daten</title>
+<title>Dokumentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -435,160 +435,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_daten">Daten</h2>
+<h2 id="_dokumentation">Dokumentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Es werden unterschiedliche Arten von Daten unterschieden:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>OpenStreetMap Daten</p>
-</li>
-<li>
-<p>Daten für das Routing</p>
-</li>
-<li>
-<p>Daten zu Abschnitten und POI</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_openstreetmap_daten">OpenStreetMap Daten</h3>
-<div class="paragraph">
-<p>Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen. Das Kopieren erfolgt während des Bauens der Anwendung. Mit dem initialen Aufruf von <code>mvn clean install</code> wird ein Datenabzug heruntergeladen, der in der pom.xml definiert ist.</p>
+<p>Die Dokumentation wird in adoc unter <code>/src/main/asciidoc</code> fortgeführt. Dadurch kann die Dokumentation sowohl in das pdf-Format umgewandelt werden, als auch in das html-Format. Für das Rendern des html-Codes, wird folgender Befehl auf der Kommandozeile ausgeführt:</p>
 </div>
 <div class="literalblock">
-<div class="title">Beispiel Regierungsbezirk Köln</div>
+<div class="title">Kommando zum Rendern der Dokumentation</div>
 <div class="content">
-<pre>&lt;download-osm.fromFile&gt;europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf&lt;/download-osm.fromFile&gt;</pre>
+<pre>mvn prepare-package</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Im angegebenen Beispiel werden die Daten für den Regierungsbezirk Köln heruntergeladen</p>
+<p>Um die erstellten html-Daten in das <code>docs</code> Verzeichnis zu kopieren, wird folgender Befehl auf der Kommandozeile ausgeführt:</p>
 </div>
 <div class="literalblock">
-<div class="title">Beispiel für Hessen</div>
+<div class="title">Kommando zum kopieren der Dokumentation</div>
 <div class="content">
-<pre>&lt;download-osm.fromFile&gt;europe/germany/hessen-latest.osm.pbf&lt;/download-osm.fromFile&gt;</pre>
+<pre>mvn process-resources</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Im Beispiel für Hessen wird ein Abzug für das Bundesland Hessen heruntergeladen.</p>
-</div>
-<div class="paragraph">
-<p>Wenn die Routing-Daten aktualisiert werden sollen, kann dies mit Hilfe von <code>mvn clean install</code> oder <code>mvn clean integration-test</code> erfolgen. <code>mvn clean</code> sorgt dabei dafür, dass das Arbeitsverzeichnis gelöscht wird. <code>mvn install</code> sorgt unter anderem dafür, dass frische Daten von der Geofabrik heruntergeladen werden.</p>
-</div>
-<div class="paragraph">
-<p>Auf der Seite <em>geofabrik.de/europe/germany</em> <a href="#geofabrik">[geofabrik]</a> findet sich einen Auflistung, welche Daten von der Geofabrik bezogen werden können.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_daten_für_das_routing">Daten für das Routing</h3>
-<div class="paragraph">
-<p>Daten werden in Form von csv-Dateien eingelesen. Diese Dateien werden im <code>resources</code> Verzeichnis hinterlegt. Die Daten sollte entsprechend der id aufgebaut sein:</p>
-</div>
-<div class="listingblock">
-<div class="title">Dateiname</div>
-<div class="content">
-<pre>b03-t06.csv</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Die Struktur besteht aus vier Spalten:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">eindeutige id; z.B. 'b03-t06-01-0'</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name des Punktes; 'null' wenn Stützpunkt</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Breitengrad; z.B. '51'</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lng</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Längengrad; z.B. '7'</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Jeder Datensatz sollte durch die <code>id</code> eindeutig identifizierbar sein. Sie sollte im Bezug auf die Kulturdaten folgendermaßen aufgebaut werden:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;bezirk&gt;-&lt;tour&gt;-&lt;nr&gt;-&lt;punkt&gt;</pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bezirk</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bezirk des Kulturpfades: z.B. Lindental: b03</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tour</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nummer der Tour; z.B. Tour 1: t01</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">nr</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nummer des Ankerpunktes; p01 für Ankerpunkt, s01 für Stützpunkt</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">punkt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.1 - Ankerpunkt; 0 - Stützpunkt</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Beispieldatensatz</div>
-<div class="content">
-<pre>b03-t06-p01-6.1;Pauliplatz;50.93808;6.89794
-b03-t06-s01-0;null;50.939027;6.894951
-b03-t06-s02-0;null;50.936174;6.894329
-b03-t06-p02-6.2;St. Joseph;50.935715;6.898566
-b03-t06-s03-0;null;50.935525;6.894479
-b03-t06-s04-0;null;50.934525;6.889544
-b03-t06-p03-6.3;Am Morsdorfer Hof;50.935508;6.889726
-b03-t06-s05-0;null;50.937527;6.883428
-b03-t06-s06-0;null;50.934146;6.886303
-b03-t06-p04-6.4;Stadtwald;50.934416;6.896775
-b03-t06-p05-6.5;Heiligenhäuschen;50.9255224;6.8967102
-b03-t06-p06-6.6;St.-Elisabeth-Krankenhaus und -Kirche;50.924175;6.89748
-b03-t06-s07-0;null;50.924199;6.899865
-b03-t06-p07-6.7;Wohnhäuser von Konrad Adenauer;50.926789;6.899918
-b03-t06-s08-0;null;50.928053;6.901571
-b03-t06-p08-6.8;Kitschburg;50.926674;6.904746
-b03-t06-p09-6.9;Villa Meirowsky;50.932155;6.904891</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Generell sollen nur Points of Interest miteinander verbunden werden. Dies sind die Ankerpunkte der Route. Es ist aber ggf notwendig Stützpunkte hinzuzufügen, die die Route so anpassen, dass nicht der direkte Weg errechnet wird. Ankerpunkte sind dadurch gekennzeichnet, dass die id mit der Ordnungszahl des Kulturpfades endet, während Stützpunkte dadurch gekennzeichnet sind, dass sie den Prefix mit dem Ankerpunkt teilen, aber die Nummer mit dem 's' verbunden sind.</p>
-</div>
-<div class="paragraph">
-<p>Weiterhin wird die zweite Spalte, die für das Feld <code>name</code> steht, mit dem Wert <code>null</code> gefüllt.</p>
-</div>
-<div class="listingblock">
-<div class="title">Ankerpunkt und zwei Stützpunkte</div>
-<div class="content">
-<pre>b03-t06-p01-6.1;Pauliplatz;50.93808;6.89794
-b03-t06-s01-0;null;50.939027;6.894951
-b03-t06-s02-0;null;50.936174;6.894329</pre>
-</div>
-</div>
+<p>Wenn die so erstellten html-Dateien mit eingecheckt werden, wird aktuell die Dokumentation unter <a href="https://weberius.github.io/kulturpfadservice/main.html">KulturpfadeService</a> zur Verfügung gestellt.</p>
 </div>
 </div>
 </div>

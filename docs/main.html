@@ -775,6 +775,32 @@ b03-t06-s02-0;null;50.936174;6.894329</pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_dokumentation">4. Dokumentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Die Dokumentation wird in adoc unter <code>/src/main/asciidoc</code> fortgeführt. Dadurch kann die Dokumentation sowohl in das pdf-Format umgewandelt werden, als auch in das html-Format. Für das Rendern des html-Codes, wird folgender Befehl auf der Kommandozeile ausgeführt:</p>
+</div>
+<div class="literalblock">
+<div class="title">Kommando zum Rendern der Dokumentation</div>
+<div class="content">
+<pre>mvn prepare-package</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Um die erstellten html-Daten in das <code>docs</code> Verzeichnis zu kopieren, wird folgender Befehl auf der Kommandozeile ausgeführt:</p>
+</div>
+<div class="literalblock">
+<div class="title">Kommando zum kopieren der Dokumentation</div>
+<div class="content">
+<pre>mvn process-resources</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wenn die so erstellten html-Dateien mit eingecheckt werden, wird aktuell die Dokumentation unter <a href="https://weberius.github.io/kulturpfadservice/main.html">KulturpfadeService</a> zur Verfügung gestellt.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_bibliography">Bibliography</h2>
 <div class="sectionbody">
 <div class="ulist bibliography">
@@ -798,7 +824,7 @@ b03-t06-s02-0;null;50.936174;6.894329</pre>
 <p><a id="jpx"></a>[6] <a href="https://github.com/jenetics/jpx">JPX</a>, github.com</p>
 </li>
 <li>
-<p><a id="geofabrik"></a>[7]<a href="https://download.geofabrik.de/europe/germany.html">Download OSM-Daten</a>, geofabrik.de</p>
+<p><a id="geofabrik"></a>[7] <a href="https://download.geofabrik.de/europe/germany.html">Download OSM-Daten</a>, geofabrik.de</p>
 </li>
 </ul>
 </div>
@@ -807,7 +833,7 @@ b03-t06-s02-0;null;50.936174;6.894329</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-01 21:53:11 +0200
+Last updated 2023-05-01 15:08:29 +0200
 </div>
 </div>
 </body>

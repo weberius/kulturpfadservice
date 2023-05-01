@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.3</version>
+		<version>2.7.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.illilli</groupId>
@@ -14,7 +14,7 @@
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<download-osm.url>https://download.geofabrik.de</download-osm.url>
 		<download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
 		<download-osm.toDir>${project.build.directory}/classes</download-osm.toDir>
