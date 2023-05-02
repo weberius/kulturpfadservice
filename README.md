@@ -24,7 +24,7 @@ Der Prozess 'mvn clean install' kann je nach Internetverbindung mehr als 5 Minut
 * http://localhost:8080/service/route/<id>
 * http://localhost:8080/service/gpx/<id>
 
-Unter http://localhost:8080/index.html?id=<id> kann eine Weboberfläche aufgerufen werden, die bei der Erstellung der Routen und Pois unterstützt. Der Wert für <id> bezeichnet einen Kulturpfad. Z.B. http://localhost:8080/index.html?id=b03-t06 öffnet die Route für den Kulturpfad 06 "Braunsfeld/ Lindenthal".
+Unter http://localhost:8080/index.html?id=id kann eine Weboberfläche aufgerufen werden, die bei der Erstellung der Routen und Pois unterstützt. Der Wert für id` bezeichnet einen Kulturpfad. Z.B. http://localhost:8080/index.html?id=b03-t06 öffnet die Route für den Kulturpfad 06 "Braunsfeld/ Lindenthal".
 
 ## Dokumentation
 
