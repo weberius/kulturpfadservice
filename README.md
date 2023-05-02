@@ -20,10 +20,11 @@ Voraussetzung für die Ausführung des Services ist die Installation von git, Ja
 
 Der Prozess 'mvn clean install' kann je nach Internetverbindung mehr als 5 Minuten dauern. Vor den Tests wird der aktuelle Abzug der OSM-Daten für den Regierungsbezirk Köln heruntergeladen. Mit Starten der Applikation ('mvn spring-boot:run') steht auf localhost:8080 ein einfacher Service mit zwei Schnittstellen zur Verfügung:
 
-* http://localhost:8080/service/poi
-* http://localhost:8080/service/route
+* http://localhost:8080/service/poi/<id>
+* http://localhost:8080/service/route/<id>
+* http://localhost:8080/service/gpx/<id>
 
-Unter http://localhost:8080 kann eine Weboberfläche aufgerufen werden, die bei der Erstellung der Routen und Pois unterstützt.
+Unter http://localhost:8080/index.html?id=<id> kann eine Weboberfläche aufgerufen werden, die bei der Erstellung der Routen und Pois unterstützt. Der Wert für <id> bezeichnet einen Kulturpfad. Z.B. http://localhost:8080/index.html?id=b03-t06 öffnet die Route für den Kulturpfad 06 "Braunsfeld/ Lindenthal".
 
 ## Dokumentation
 
