@@ -65,13 +65,12 @@ $(document).ready(function(){
 });
 
 function loadMap(){
-  console.log("Load map function");
+  console.log("Load map function!");
 
   if (typeof config === 'undefined') {
     $.growl.error({message: "Error - the configuration file is not found!", fixed: true});
     return null
   }
-
 
   // Get parameters passed via the URL. Overwrite the config file's start parameter
   if(getURLParameter("id") !== null) {
@@ -137,7 +136,9 @@ function loadMap(){
   if(config.layers === undefined){
     config.layers = [];
   }
+
   for (var layerIdx = 0; layerIdx < config.layers.length; layerIdx ++){
+
     try {
       var layer;
       var layerConfig = config.layers[layerIdx];
@@ -267,7 +268,9 @@ function loadMap(){
           });
         }
         // Configure tooltip or popup
-        if (layerConfig.popup !== undefined || layerConfig.tooltipField !== undefined){layerConfig.onEachFeature = configurePopup;}
+        if (layerConfig.popup !== undefined || layerConfig.tooltipField !== undefined) {
+          layerConfig.onEachFeature = configurePopup;
+        }
 
         if (layerConfig.cluster) {
           if (layerConfig.clusterIconClass !== undefined){
@@ -815,31 +818,39 @@ function setBasemap(basemap){
 }
 
 function configurePopup(feature, layer) {
-  if (feature.properties) {
-    if (this.popup !== undefined){
-      var popupContent = "<table class='table table-condensed'>";
-      for (key in feature.properties){
-        var val = feature.properties[key];
-        // Ignore nulls, and GeoServer default attributes such as bbox, geom and gid. Add others to this list if required
-        if (val !== null && val !== undefined && $.inArray(key, ["bbox", "geom", "gid"]) < 0) {
 
-          // Use the field alias if supplied in the outFields parameter
-          if (this.outFields !== undefined) {
-            var outFields = this.outFields;
-            var outputs = formatPopup(key, val, outFields);
-            key = outputs[0];
-            val = outputs[1];
+  var popupContent = "";
+  if (feature.properties) {
+      // check for poi or route
+      var isRoute = false;
+      var isPoi = false;
+      for (key in feature.properties) {
+          var val = feature.properties[key];
+          if (key !== null && key == "type" && val == "poi") {
+            isPoi = true;
+          } else if (key !== null && key == "type" && val == "route") {
+            isRoute = true;
           }
-          if (key !== null) {
-            popupContent += "<tr><td>" + key + "</td><td>"+ val + "</td></tr>";
-          }
-        }
       }
 
+      if (isPoi) {
+        var key = "name";
+        var val = feature.properties[key];
+        popupContent += "<div>"+ val + "</div>";
+        var key = "id";
+        var val = feature.properties[key];
+        popupContent += "<div>" + val + "</div>";
+      }
+      if (isRoute) {
+        var key = "time";
+        var val = feature.properties[key];
+        popupContent += "<div>" + key + " = " + val + "</div>";
+        var key = "distance";
+        var val = feature.properties[key];
+        popupContent += "<div>" + key + " = " + val + "</div>";
+      }
       popupContent = popupContent.replace(/>,</g, "><");
-      popupContent += "</table>";
       layer.bindPopup(popupContent);
-    }
 
     if (this.tooltipField !== undefined){
       try{

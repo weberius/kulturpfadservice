@@ -47,8 +47,9 @@ public class RouteServiceForFeatureCollection {
             feature.setGeometry(lineString);
             // set properties to feature
             Map<String, Object> properties = new Hashtable<String, Object>();
-            properties.put("distance", routingData.getDistance());
-            properties.put("time", routingData.getTime());
+            properties.put("distance", routingData.getDistance() + " m");
+            properties.put("time", routingData.getTime() + " min");
+            properties.put("type", "route");
             feature.setProperties(properties);
             // add feature to featurecollection
             this.featureCollection.add(feature);

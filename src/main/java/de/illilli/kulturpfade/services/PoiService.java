@@ -50,6 +50,7 @@ public class PoiService {
             }
 
             properties.put("name", name);
+            properties.put("type", "poi");
             feature.setProperties(properties);
             if (poi.getName() != null && !poi.getName().equalsIgnoreCase("null")) {
                 featureCollection.add(feature);
