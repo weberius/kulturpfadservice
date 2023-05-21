@@ -1,13 +1,10 @@
 package de.illilli.kulturpfade.services;
 
-import com.graphhopper.util.Instruction;
-import com.graphhopper.util.InstructionList;
-import de.illilli.kulturpfade.model.Data;
+import de.illilli.kulturpfade.model.Culturalpath;
 import de.illilli.kulturpfade.model.POI;
 import de.illilli.kulturpfade.model.RoutingData;
 import de.illilli.kulturpfade.repository.JdbcRepository;
 import de.illilli.kulturpfade.repository.PoiValuesRepository;
-import org.apache.commons.collections.list.AbstractLinkedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -21,7 +18,7 @@ public class RouteServiceForDataTable {
     private static Logger logger = LoggerFactory.getLogger(RouteServiceForDataTable.class);
 
     private JdbcRepository<POI> repo = new PoiValuesRepository("");
-    private List<Data> data = new ArrayList<>();
+    private List<Culturalpath> data = new ArrayList<>();
 
     public RouteServiceForDataTable() throws RoutingNotAvailableException {
         this("data");
@@ -41,7 +38,7 @@ public class RouteServiceForDataTable {
         String name = poi.getId().substring(12) + " " + poi.getName();
         String timeStr = String.format("%02d:%02d h", 0, 0);
         String distanceStr = "" + String.format("%d,%03d km", 0, 0);
-        this.data.add(new Data(poiId, name, timeStr, distanceStr));
+        this.data.add(new Culturalpath(poiId, name, timeStr, distanceStr));
 
         for (RoutingData routingData : routingDataList) {
 
@@ -61,7 +58,7 @@ public class RouteServiceForDataTable {
                 int remainingMeters = distance % 1000;
                 distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
 
-                this.data.add(new Data(poiId, name, timeStr, distanceStr));
+                this.data.add(new Culturalpath(poiId, name, timeStr, distanceStr));
             } else {
                 time = time + routingData.getTime();
                 distance = distance + routingData.getDistance();
@@ -73,7 +70,7 @@ public class RouteServiceForDataTable {
 
     }
 
-    public List<Data> getData() {
+    public List<Culturalpath> getData() {
         return this.data;
     }
 

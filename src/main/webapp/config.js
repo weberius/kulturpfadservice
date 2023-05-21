@@ -100,6 +100,9 @@ var config = {
 		"fillColor": '#E31A1C',
 		"stroke": true
 	},
+    "culturalpath": {
+        "url": "/service/data/data.json"
+    },
 	"layers": [
 	{
         "id": "poi",

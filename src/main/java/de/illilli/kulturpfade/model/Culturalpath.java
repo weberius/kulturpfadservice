@@ -1,15 +1,13 @@
 package de.illilli.kulturpfade.model;
 
-import java.util.Objects;
-
-public class Data {
+public class Culturalpath {
 
     private String id;
     private String name;
     private String time;
     private String distance;
 
-    public Data(String id, String name, String time, String distance) {
+    public Culturalpath(String id, String name, String time, String distance) {
         this.id = id;
         this.name = name;
         this.time = time;
