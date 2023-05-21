@@ -29,17 +29,25 @@ public class RouteServiceForDataTable {
 
     public RouteServiceForDataTable(String id) throws RoutingNotAvailableException {
         // preparing for FeatureCollection
-        int i = 0;
         List<POI> poiList = new PoiValuesRepository(id).find();
+        List<RoutingData> routingDataList = new PrepareRouting(id).getData();
 
+        int i = 0;
         int time = 0;
         int distance = 0;
 
-        for (RoutingData routingData : new PrepareRouting(id).getData()) {
+        POI poi = poiList.get(0);
+        String poiId = poi.getId();
+        String name = poi.getId().substring(12) + " " + poi.getName();
+        String timeStr = String.format("%02d:%02d h", 0, 0);
+        String distanceStr = "" + String.format("%d,%03d km", 0, 0);
+        this.data.add(new Data(poiId, name, timeStr, distanceStr));
 
-            POI poi = poiList.get(i);
-            String poiId = poi.getId();
-            String name = "null";
+        for (RoutingData routingData : routingDataList) {
+
+            poi = poiList.get(i+1);
+            poiId = poi.getId();
+
             if (poiId.length() >= 12 && !"null".equalsIgnoreCase(poi.getName())) {
                 name = poi.getId().substring(12) + " " + poi.getName();
                 time = time + routingData.getTime();
@@ -47,11 +55,11 @@ public class RouteServiceForDataTable {
 
                 int hours = time / 60;
                 int remainingMinutes = time % 60;
-                String timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
+                timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
 
                 int kilometers = distance / 1000;
                 int remainingMeters = distance % 1000;
-                String distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
+                distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
 
                 this.data.add(new Data(poiId, name, timeStr, distanceStr));
             } else {
@@ -61,6 +69,8 @@ public class RouteServiceForDataTable {
 
             i++;
         }
+
+
     }
 
     public List<Data> getData() {
