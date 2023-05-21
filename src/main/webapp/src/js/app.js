@@ -76,6 +76,7 @@ function loadMap(){
   if(getURLParameter("id") !== null) {
     config.layers[0].url = "/service/poi/" + getURLParameter("id") + ".geojson";
     config.layers[1].url = "/service/route/" + getURLParameter("id") + ".geojson";
+    config.culturalpath.url = "/service/data/" + getURLParameter("id") + ".json";
   }
   if(getURLParameter("lat") !== null && getURLParameter("lng") !== null){
     config.start.center = [getURLParameter("lat"), getURLParameter("lng")]
@@ -654,7 +655,6 @@ function loadMap(){
         configureIdentifyTool();
         $('*[data-tool="' +  config.activeTool + '"]').addClass("active");
       }
-
     } else if (config.activeTool === 'coordinates') {
       configureCoordinatesTool();
       $('*[data-tool="' +  config.activeTool + '"]').addClass("active");
@@ -668,6 +668,9 @@ function loadMap(){
         configureFilterWidget();
         $('*[data-tool="' +  config.activeTool + '"]').addClass("active");
       }
+    } else if (config.activeTool === 'culturalpath') {
+      configureCulturalpathTool();
+      $('*[data-tool="' +  config.activeTool + '"]').addClass("active");
     }
     // TODO - add more tools here, with corresponding configureXXXtool functions
 
@@ -2403,6 +2406,41 @@ function handleWMSIdentifyResult(data){
   }
 }
 
+/**************************************************************************************************/
+// CULTURALPATH TOOL START
+/**************************************************************************************************/
+
+function configureCulturalpathTool() {
+
+  bootleaf.activeTool = "culturalpath";
+  switchOffTools();
+  bootleaf.map.on('click', showMarker);
+
+  // datatable
+  $(document).ready(function() {
+  	$('#culturalpath').DataTable({
+  	    ajax: {
+            url: config.culturalpath.url,
+            dataSrc: 'data'
+        },
+  		"searching": false,
+  		"paging": false,
+  		"ordering": false,
+  		"info": false,
+  		"retrieve": true,
+  		"columns" : [ {
+  			"data" : "name"
+  		}, {
+  			"data" : "time"
+  		}, {
+  			"data" : "distance"
+  		} ]
+  	});
+  });
+
+  $("#legendModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+}
 
 /**************************************************************************************************/
 // COORDINATES TOOL START
@@ -2441,7 +2479,6 @@ function showMarker(evt){
     style: bootleaf.highlightStyle
   }).bindPopup(message).addTo(bootleaf.map).openPopup();
 }
-
 
 function generateGuid(){
   var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -2656,7 +2693,7 @@ function updateTOCcheckboxes(){
 function fetchWFS(){
 
   // Clear any WFS label layers (geoJSON label layers aren't reset on pan/zoom)
-  for (var i=0; i<bootleaf.labelLayers.length; i++){
+  for (var i=0; i < bootleaf.labelLayers.length; i++){
     var labelLayer = bootleaf.labelLayers[i];
     if (labelLayer.layerConfig.type === 'WFS'){
       labelLayer.clearLayers();

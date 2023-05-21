@@ -102,6 +102,9 @@
                     <a href="#" id="share-btn" class="dropdown-item mapTools" data-tool="share">
                         <i class="fa fa-share"></i>&nbsp;&nbsp;Share map
                     </a>
+                    <a href="#" id="culturalpath-btn" class="dropdown-item mapTools" data-tool="culturalpath">
+                        <i class="fa fa-compass"></i>&nbsp;&nbsp;Kulturpfad
+                    </a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -180,7 +183,6 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
 <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -219,6 +221,35 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Weg des Kulturpfads</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table id="culturalpath" class="display" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Zeit</th>
+                        <th>Entfernung</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!-- handlebars templates -->
 <script id="query-template" type="text/x-handlebars-template">

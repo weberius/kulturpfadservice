@@ -104,6 +104,10 @@ $("#coordinates-btn").click(function() {
   configureCoordinatesTool();
 });
 
+$("#culturalpath-btn").click(function() {
+  configureCulturalpathTool();
+});
+
 $("#share-btn").click(function() {
   // This function returns the hostname and parameters, which can be used to generate a unique URL for the current map
   shareObj = configureShare();

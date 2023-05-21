@@ -1,11 +1,11 @@
 package de.illilli.kulturpfade.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.illilli.kulturpfade.model.DataTable;
 import de.illilli.kulturpfade.services.PoiService;
 import de.illilli.kulturpfade.services.RouteServiceForDataTable;
 import de.illilli.kulturpfade.services.RouteServiceForFeatureCollection;
 import de.illilli.kulturpfade.services.RouteServiceForGPX;
-import io.jenetics.jpx.GPX;
 import org.geojson.FeatureCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +60,8 @@ public class KulturpfadeController {
         id = id.substring(0, id.indexOf('.'));
 
         RouteServiceForDataTable service = new RouteServiceForDataTable(id);
-        return new ObjectMapper().writeValueAsString(service.getData());
+        DataTable data = new DataTable(service.getData());
+        return new ObjectMapper().writeValueAsString(data);
 
     }
 
