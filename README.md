@@ -4,11 +4,11 @@
 
 Der KulturpfadeService bietet die Möglichkeit, aus einer Liste an Orten eine Fussgänger-Route zu erstellen. Anhand der Adressen werden die notwendigen x/y-Koordinaten erstellt.
 
-Die Liste an Orten enhalten eine eindeutige ID, den Namen und die x/y Koordinaten. Mit Hilfe der Routing-Software Graphhopper wird hieraus eine Route erstellt, die in Form von geojson-Objekten zur Verfügung gestellt werden. Ausserdem ermöglicht es eine eindeutige ID, weitergehende Informationen mit dem Ort zu verknüpfen. Es wird darüber hinaus einen Schnittstelle zur Verfügung gestellt, die den Download der Information im `gpx` Format ermöglicht. Somit ist die Voraussetzung gegeben, die Route in eine Routing-App, wie komoot zu importieren.
+Die Liste an Orten enhalten eine eindeutige ID, den Namen und die x/y Koordinaten. Mit Hilfe der Routing-Software [Graphhopper](https://www.graphhopper.com/de/) wird hieraus eine Route erstellt, die in Form von `geojson`-Objekten zur Verfügung gestellt werden. Ausserdem ermöglicht es die ID, weitergehende Informationen mit dem Ort zu verknüpfen. Es wird darüber hinaus einen Schnittstelle zur Verfügung gestellt, die den Download der Information im `gpx` Format ermöglicht. Somit ist die Voraussetzung gegeben, die Route in eine Routing-App, wie z.B. [komoot](https://www.komoot.de/) zu importieren.
 
 Die Software ist als Service gedacht, die es erlaubt, die notwendigen Daten für die Bereitstellung einer Oberfläche ohne Backend zu generieren. 
 
-Der Service enthält eine einfache Weboberfläche enthalten, die es erlaubt das Ergebnis zu kontrollieren. Sie dient ausserdem als Grundlage für die später zu erstellenden Webseiten.
+Der Service enthält eine einfache Weboberfläche, die es erlaubt das Ergebnis zu kontrollieren. Sie dient ausserdem als Grundlage für die später zu erstellenden Webseiten.
 
 ## Download, build, start
 
