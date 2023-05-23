@@ -2,17 +2,17 @@
 
 ## Idee
 
-Der KulturpfadeService bietet die Möglichkeit, aus einer Liste an Orten eine Fussgänger-Route zwischen diesen Orten zu erstellen.
+Der KulturpfadeService bietet die Möglichkeit, aus einer Liste an Orten eine Fussgänger-Route zu erstellen. Anhand der Adressen werden die notwendigen x/y-Koordinaten erstellt.
 
-Hierfür wird ein Dokument mit Orten übergeben. Anhand der Adressen werden die notwendigen x/y-Koordinaten erstellt. Mit Hilfe der Routing-Software Graphhopper wird hieraus eine Route erstellt, die in Form von geojson-Objekten zur Verfügung gestellt werden. Die Orte enhalten eine eindeutige ID, die es ermöglicht, weitergehende Informationen mit dem Ort zu verknüpfen. 
+Die Liste an Orten enhalten eine eindeutige ID, den Namen und die x/y Koordinaten. Mit Hilfe der Routing-Software Graphhopper wird hieraus eine Route erstellt, die in Form von geojson-Objekten zur Verfügung gestellt werden. Ausserdem ermöglicht es eine eindeutige ID, weitergehende Informationen mit dem Ort zu verknüpfen. Es wird darüber hinaus einen Schnittstelle zur Verfügung gestellt, die den Download der Information im `gpx` Format ermöglicht. Somit ist die Voraussetzung gegeben, die Route in eine Routing-App, wie komoot zu importieren.
 
 Die Software ist als Service gedacht, die es erlaubt, die notwendigen Daten für die Bereitstellung einer Oberfläche ohne Backend zu generieren. 
 
-Der Service soll eine einfache Weboberfläche enthalten, um das Ergebnis einfach kontrollieren zu können.
+Der Service enthält eine einfache Weboberfläche enthalten, die es erlaubt das Ergebnis zu kontrollieren. Sie dient ausserdem als Grundlage für die später zu erstellenden Webseiten.
 
 ## Download, build, start
 
-Voraussetzung für die Ausführung des Services ist die Installation von git, Java 11 und Maven 3. Der Service kann dann mit folgenden Befehlen heruntergeladen, gebaut und ausgeführt werden:
+Voraussetzung für die Ausführung des Services ist die Installation von `git`, `Java 17` und `Maven 3`. Der Service kann dann mit folgenden Befehlen heruntergeladen, gebaut und ausgeführt werden:
 
   1. git clone https://github.com/weberius/kulturpfadservice.git
   2. mvn clean install
