@@ -29,4 +29,4 @@ Unter http://localhost:8080/index.html?id=id kann eine Weboberfläche aufgerufen
 ## Dokumentation
 
 Die Dokumentation des Service wird unter src/main/asciidoc fortgeführt. 
-Die Dokumentation wird im Rahmen der `prepare-package` Phase in html überführt und steht unter [hier](https://weberius.github.io/kulturpfadservice/main.html) zur Verfügung.
+Die Dokumentation wird im Rahmen der `prepare-package` Phase in html überführt und steht unter [weberius.github.io/kulturpfadservice/main.html](https://weberius.github.io/kulturpfadservice/main.html) zur Verfügung.
