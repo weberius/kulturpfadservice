@@ -38,27 +38,7 @@ var config = {
 		"history": {
 			"position": "bottomleft"
 		},
-		"bookmarks": {
-			"position": "bottomright",
-			"places": [
-				{
-                    "latlng": [40.7916, -73.9924],
-                    "zoom": 16,
-                    "name": "Manhattan",
-                    "id": "a148fa354ba3",
-                    "editable": false,
-                    "removable": false
-				},
-				{
-                    "latlng": [50.941357, 6.958307],
-                    "zoom": 16,
-                    "name": "Kölner Dom",
-                    "id": "1",
-                    "editable": false,
-                    "removable": false
-				}
-			]
-		}
+		"bookmarks": {}
 	},
 
 	"activeTool": "filterWidget", // options are identify/coordinates/queryWidget
