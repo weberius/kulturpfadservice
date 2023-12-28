@@ -12,6 +12,7 @@ import org.geojson.LngLatAlt;
 import org.springframework.stereotype.Component;
 
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +28,7 @@ public class RouteServiceForFeatureCollection {
 
     /**
      * service defalut value;
+     *
      * @throws RoutingNotAvailableException
      */
     public RouteServiceForFeatureCollection() throws RoutingNotAvailableException {
@@ -34,9 +36,13 @@ public class RouteServiceForFeatureCollection {
     }
 
     public RouteServiceForFeatureCollection(String id) throws RoutingNotAvailableException {
+        this(new PrepareRouting(id).getData());
+    }
+
+    public RouteServiceForFeatureCollection(List<RoutingData> routingDataList) throws RoutingNotAvailableException {
 
         // preparing for FeatureCollection
-        for (RoutingData routingData : new PrepareRouting(id).getData()) {
+        for (RoutingData routingData : routingDataList) {
             Feature feature = new Feature();
             // set line
             LineString lineString = new LineString();
@@ -53,7 +59,7 @@ public class RouteServiceForFeatureCollection {
             feature.setProperties(properties);
             // add feature to featurecollection
             this.featureCollection.add(feature);
-            this.distance = this.distance +  routingData.getDistance();
+            this.distance = this.distance + routingData.getDistance();
             this.time = this.time + routingData.getTime();
         }
     }

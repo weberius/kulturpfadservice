@@ -25,9 +25,10 @@ public class RouteServiceForDataTable {
     }
 
     public RouteServiceForDataTable(String id) throws RoutingNotAvailableException {
-        // preparing for FeatureCollection
-        List<POI> poiList = new PoiValuesRepository(id).find();
-        List<RoutingData> routingDataList = new PrepareRouting(id).getData();
+        this(new PoiValuesRepository(id).find(), new PrepareRouting(id).getData());
+    }
+
+    RouteServiceForDataTable(List<POI> poiList, List<RoutingData> routingDataList) throws RoutingNotAvailableException {
 
         int i = 0;
         int time = 0;
@@ -42,7 +43,7 @@ public class RouteServiceForDataTable {
 
         for (RoutingData routingData : routingDataList) {
 
-            poi = poiList.get(i+1);
+            poi = poiList.get(i + 1);
             poiId = poi.getId();
 
             if (poiId.length() >= 12 && !"null".equalsIgnoreCase(poi.getName())) {
