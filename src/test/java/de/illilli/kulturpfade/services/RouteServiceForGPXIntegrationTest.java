@@ -14,7 +14,7 @@ public class RouteServiceForGPXIntegrationTest {
     @Test
     void testSomePois() throws Exception {
 
-        RouteServiceForGPX routeService = new RouteServiceForGPX("b03-t04");
+        RouteServiceForGPX routeService = new RouteServiceForGPX();
 
         logger.debug(routeService.getData().getRoutes().get(0).toString());
 

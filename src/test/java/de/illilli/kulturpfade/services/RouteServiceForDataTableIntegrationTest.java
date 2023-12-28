@@ -15,7 +15,7 @@ public class RouteServiceForDataTableIntegrationTest {
     @Test
     void testSomePois() throws Exception {
 
-        RouteServiceForDataTable service = new RouteServiceForDataTable("b03-t06");
+        RouteServiceForDataTable service = new RouteServiceForDataTable();
         logger.debug(service.getData().toString());
 
         assertFalse(service.getData().isEmpty());
