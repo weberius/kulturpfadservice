@@ -36,7 +36,8 @@ public class RouteServiceForDataTable {
 
         POI poi = poiList.get(0);
         String poiId = poi.getId();
-        String name = poi.getId().substring(12) + " " + poi.getName();
+        int beginIndex = poi.getId().lastIndexOf("-") + 1;
+        String name = poi.getId().substring(beginIndex) + " " + poi.getName();
         String timeStr = String.format("%02d:%02d h", 0, 0);
         String distanceStr = "" + String.format("%d,%03d km", 0, 0);
         this.data.add(new Culturalpath(poiId, name, timeStr, distanceStr));
@@ -47,7 +48,7 @@ public class RouteServiceForDataTable {
             poiId = poi.getId();
 
             if (poiId.length() >= 12 && !"null".equalsIgnoreCase(poi.getName())) {
-                name = poi.getId().substring(12) + " " + poi.getName();
+                name = poi.getId().substring(beginIndex) + " " + poi.getName();
                 time = time + routingData.getTime();
                 distance = distance + routingData.getDistance();
 

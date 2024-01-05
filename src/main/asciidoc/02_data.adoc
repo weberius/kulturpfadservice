@@ -47,6 +47,9 @@ Jeder Datensatz sollte durch die `id` eindeutig identifizierbar sein. Sie sollte
 
   <bezirk>-<tour>-<nr>-<punkt>
 
+Wichtig ist hier, dass die Werte innerhalb der ID in der weiteren Verarbeitung verwendet werden. Dafür ist es notwendig, dass die Werte durch `-` von einander getrennt werden.
+
+.Bedeutung der `id`
 |===
 |bezirk|Bezirk des Kulturpfades: z.B. Lindental: b03
 |tour|Nummer der Tour; z.B. Tour 1: t01
