@@ -80,11 +80,14 @@ b03-t06-p09-6.9;Villa Meirowsky;50.932155;6.904891
 
 Generell sollen nur Points of Interest miteinander verbunden werden. Dies sind die Ankerpunkte der Route. Es ist aber ggf notwendig Stützpunkte hinzuzufügen, die die Route so anpassen, dass nicht der direkte Weg errechnet wird. Ankerpunkte sind dadurch gekennzeichnet, dass die id mit der Ordnungszahl des Kulturpfades endet, während Stützpunkte dadurch gekennzeichnet sind, dass sie den Prefix mit dem Ankerpunkt teilen, aber die Nummer mit dem 's' verbunden sind.
 
+Es werden allerdings auch Ankerlose Punkte untersützt. Sie sind dann notwendig, wenn ein POI nicht mit in das Routing einbezogen werden soll. Ankerlose Punkte sind durch die Zeichenkombination "-u" gekennzeichnet. Bsp.: `b09-t01-u01-0.1`
+
 Weiterhin wird die zweite Spalte, die für das Feld `name` steht, mit dem Wert `null` gefüllt.
 
-.Ankerpunkt und zwei Stützpunkte
+.Ankerpunkt und zwei Stützpunkte, ein ankerloser Punkt
 ----
 b03-t06-p01-6.1;Pauliplatz;50.93808;6.89794
 b03-t06-s01-0;null;50.939027;6.894951
 b03-t06-s02-0;null;50.936174;6.894329
+b03-t06-u01-7.1;Platz;50.92808;6.88794
 ----

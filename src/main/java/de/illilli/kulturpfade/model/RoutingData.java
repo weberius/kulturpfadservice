@@ -24,6 +24,22 @@ public class RoutingData {
         this.toLon = toLon;
     }
 
+    public double getFromLat() {
+        return this.fromLat;
+    }
+
+    public double getFromLon() {
+        return this.fromLon;
+    }
+
+    public double getToLat() {
+        return this.toLat;
+    }
+
+    public double getToLon() {
+        return this.toLon;
+    }
+
     public PointList getPoints() {
         return points;
     }
