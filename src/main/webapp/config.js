@@ -2,17 +2,17 @@ var config = {
 	"requireArcGISLogin": false, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL
 
-	"title": "Kulturpfade Köln",
+	"title": "Fotopfad Fritzlar",
 	"start": {
 		// "maxZoom": 16,
-		"center": [50.941,6.958],
-		"zoom": 13,
+		"center": [51.1318,9.27438],
+		"zoom": 17,
 		"attributionControl": true,
 		"zoomControl": false,
 		"data": "data"
 	},
 	"about": {
-		"title": "Kulturpfade",
+		"title": "Fotopfad Fritzlar",
 		"contents": "<p>This is an open-source version of the excellent <a href='https://github.com/bmcbride/bootleaf'>Bootleaf map </a>started by Bryan McBride.</p><p>It's designed for rapid web map development. See <a href='https://github.com/iag-geo/bootleaf'>https://github.com/iag-geo/bootleaf</a> for more information.</p><p>Chage this message in the config file</p>"
 	},
 	"controls": {
@@ -38,27 +38,7 @@ var config = {
 		"history": {
 			"position": "bottomleft"
 		},
-		"bookmarks": {
-			"position": "bottomright",
-			"places": [
-				{
-                    "latlng": [40.7916, -73.9924],
-                    "zoom": 16,
-                    "name": "Manhattan",
-                    "id": "a148fa354ba3",
-                    "editable": false,
-                    "removable": false
-				},
-				{
-                    "latlng": [50.941357, 6.958307],
-                    "zoom": 16,
-                    "name": "Kölner Dom",
-                    "id": "1",
-                    "editable": false,
-                    "removable": false
-				}
-			]
-		}
+		"bookmarks": {}
 	},
 
 	"activeTool": "filterWidget", // options are identify/coordinates/queryWidget
