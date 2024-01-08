@@ -34,41 +34,54 @@ public class RouteServiceForDataTable {
         int time = 0;
         int distance = 0;
 
-        POI poi = poiList.get(0);
-        String poiId = poi.getId();
-        String name = poi.getId().substring(12) + " " + poi.getName();
         String timeStr = String.format("%02d:%02d h", 0, 0);
         String distanceStr = "" + String.format("%d,%03d km", 0, 0);
-        this.data.add(new Culturalpath(poiId, name, timeStr, distanceStr));
 
-        for (RoutingData routingData : routingDataList) {
+        for (POI poi : poiList) {
+            String poiId = poi.getId();
+            int beginIndex = poi.getId().lastIndexOf("-") + 1;
+            String name = poi.getId().substring(beginIndex) + " " + poi.getName();
 
-            poi = poiList.get(i + 1);
-            poiId = poi.getId();
-
-            if (poiId.length() >= 12 && !"null".equalsIgnoreCase(poi.getName())) {
-                name = poi.getId().substring(12) + " " + poi.getName();
-                time = time + routingData.getTime();
-                distance = distance + routingData.getDistance();
-
-                int hours = time / 60;
-                int remainingMinutes = time % 60;
-                timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
-
-                int kilometers = distance / 1000;
-                int remainingMeters = distance % 1000;
-                distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
-
-                this.data.add(new Culturalpath(poiId, name, timeStr, distanceStr));
-            } else {
-                time = time + routingData.getTime();
-                distance = distance + routingData.getDistance();
+            if (i == 0) {
+                Culturalpath path = new Culturalpath(poiId, name, timeStr, distanceStr);
+                this.data.add(path);
             }
 
+            if (AnchorType.isAnchor(poiId)) {
+                for (RoutingData routingData : routingDataList) {
+                    if (poi.getLat() == routingData.getToLat()
+                            && poi.getLng() == routingData.getToLon()) {
+
+                        time = time + routingData.getTime();
+                        distance = distance + routingData.getDistance();
+
+                        int hours = time / 60;
+                        int remainingMinutes = time % 60;
+                        timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
+                        int kilometers = distance / 1000;
+                        int remainingMeters = distance % 1000;
+                        distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
+
+                        Culturalpath path = new Culturalpath(poiId, name, timeStr, distanceStr);
+                        this.data.add(path);
+                        break;
+                    }
+                }
+            } else if (AnchorType.isBase(poiId)) {
+                for (RoutingData routingData : routingDataList) {
+                    if (poi.getLat() == routingData.getToLat()
+                            && poi.getLng() == routingData.getToLon()) {
+                        time = time + routingData.getTime();
+                        distance = distance + routingData.getDistance();
+                        break;
+                    }
+                }
+            } else if (AnchorType.isUnanchored(poiId)) {
+                Culturalpath path = new Culturalpath(poiId, name, "", "");
+                this.data.add(path);
+            }
             i++;
         }
-
-
     }
 
     public List<Culturalpath> getData() {

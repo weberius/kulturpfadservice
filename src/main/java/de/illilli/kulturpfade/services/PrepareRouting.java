@@ -24,7 +24,10 @@ public class PrepareRouting {
         POI fromPOI = null;
         POI toPOI = null;
         for (int i = 0; i < beans.size(); i++) {
-            if (i == 0) {
+            if (AnchorType.isUnanchored(beans.get(i).getId())) {
+                // intentionally left blank
+                // ignore POI
+            } else if (i == 0) {
                 fromPOI = beans.get(i);
             } else {
                 toPOI = beans.get(i);

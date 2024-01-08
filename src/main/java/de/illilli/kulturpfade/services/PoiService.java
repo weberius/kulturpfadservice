@@ -46,7 +46,8 @@ public class PoiService {
             String name = poi.getName();
 
             if (poi.getId() != null && poi.getId().length() >= 15) {
-                name = poi.getId().substring(12) + " " + poi.getName();
+                int beginIndex = poi.getId().lastIndexOf("-") + 1;
+                name = poi.getId().substring(beginIndex) + " " + poi.getName();
             }
 
             properties.put("name", name);

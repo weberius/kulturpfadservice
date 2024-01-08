@@ -1,5 +1,7 @@
 package de.illilli.kulturpfade.model;
 
+import java.util.Objects;
+
 public class Culturalpath {
 
     private String id;
@@ -28,6 +30,19 @@ public class Culturalpath {
 
     public String getDistance() {
         return distance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Culturalpath that = (Culturalpath) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
