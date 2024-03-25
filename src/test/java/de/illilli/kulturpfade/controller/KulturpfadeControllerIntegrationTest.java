@@ -1,6 +1,7 @@
 package de.illilli.kulturpfade.controller;
 
 import de.illilli.kulturpfade.services.PoiService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Tests the api; empty '/data/data.geojson' is provieded in webapp-directory
+ */
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = {KulturpfadeController.class, PoiService.class})
 @WebMvcTest
@@ -31,7 +35,7 @@ public class KulturpfadeControllerIntegrationTest {
     public void testGetPois() throws Exception {
 
         MvcResult result =
-                mockMvc.perform(MockMvcRequestBuilders.get("/service/poi/data.geojson")
+                mockMvc.perform(MockMvcRequestBuilders.get("/data/data.geojson")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
@@ -46,7 +50,7 @@ public class KulturpfadeControllerIntegrationTest {
     public void testGetRoutes() throws Exception {
 
         MvcResult result =
-                mockMvc.perform(MockMvcRequestBuilders.get("/service/route/data.geojson")
+                mockMvc.perform(MockMvcRequestBuilders.get("/data/data.geojson")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())

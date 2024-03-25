@@ -16,12 +16,14 @@ public class RouteServiceForGPX {
 
     private GPX gpx;
 
-    public RouteServiceForGPX() throws RoutingNotAvailableException {
-        this("data");
+    public RouteServiceForGPX() {
     }
 
     public RouteServiceForGPX(String id) throws RoutingNotAvailableException {
+        calculateGpx(id);
+    }
 
+    private void calculateGpx(String id) throws RoutingNotAvailableException {
         List<WayPoint> wayPointList = new ArrayList<>();
 
         for (RoutingData routingData : new PrepareRouting(id).getData()) {
@@ -42,7 +44,6 @@ public class RouteServiceForGPX {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public GPX getData(){

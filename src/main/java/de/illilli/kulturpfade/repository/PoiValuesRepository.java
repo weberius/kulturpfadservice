@@ -32,7 +32,13 @@ public class PoiValuesRepository implements JdbcRepository<POI> {
 
         List<POI> beans = new ArrayList<>();
 
-        String fileName = this.getClass().getResource(this.data).getFile();
+        String fileName = "";
+
+        if (this.getClass().getResource(this.data) == null) {
+            return beans;
+        } else {
+            fileName = this.getClass().getResource(this.data).getFile();
+        }
 
         try {
             beans = new CsvToBeanBuilder(new FileReader(fileName))

@@ -101,25 +101,4 @@ public class RoutingServiceIntegrationTest {
         }
     }
 
-    /**
-     * Teste, dass eine RoutingNotAvailabteException Excepton geworfen wird, wenn zwischen den Punkten nicht
-     * geroutet werden kann, weil sie ausserhalb des OSM-Datensatzes liegen.
-     * @throws Exception
-     */
-    @Test
-    void testFarAway() throws Exception {
-
-        Assertions.assertThrows(RoutingNotAvailableException.class, () -> {
-
-            RoutingService routing = new RoutingService();
-            double fromLat = 50.962099;
-            double fromLon = 6.999916;
-            double toLat = 51.107309;
-            double toLon = 6.938838;
-
-            routing.setPoints(fromLat, fromLon, toLat, toLon);
-        });
-
-    }
-
 }

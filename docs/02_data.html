@@ -589,14 +589,18 @@ b03-t06-p09-6.9;Villa Meirowsky;50.932155;6.904891</pre>
 <p>Generell sollen nur Points of Interest miteinander verbunden werden. Dies sind die Ankerpunkte der Route. Es ist aber ggf notwendig Stützpunkte hinzuzufügen, die die Route so anpassen, dass nicht der direkte Weg errechnet wird. Ankerpunkte sind dadurch gekennzeichnet, dass die id mit der Ordnungszahl des Kulturpfades endet, während Stützpunkte dadurch gekennzeichnet sind, dass sie den Prefix mit dem Ankerpunkt teilen, aber die Nummer mit dem 's' verbunden sind.</p>
 </div>
 <div class="paragraph">
+<p>Es werden allerdings auch Ankerlose Punkte untersützt. Sie sind dann notwendig, wenn ein POI nicht mit in das Routing einbezogen werden soll. Ankerlose Punkte sind durch die Zeichenkombination "-u" gekennzeichnet. Bsp.: <code>b09-t01-u01-0.1</code></p>
+</div>
+<div class="paragraph">
 <p>Weiterhin wird die zweite Spalte, die für das Feld <code>name</code> steht, mit dem Wert <code>null</code> gefüllt.</p>
 </div>
 <div class="listingblock">
-<div class="title">Ankerpunkt und zwei Stützpunkte</div>
+<div class="title">Ankerpunkt und zwei Stützpunkte, ein ankerloser Punkt</div>
 <div class="content">
 <pre>b03-t06-p01-6.1;Pauliplatz;50.93808;6.89794
 b03-t06-s01-0;null;50.939027;6.894951
-b03-t06-s02-0;null;50.936174;6.894329</pre>
+b03-t06-s02-0;null;50.936174;6.894329
+b03-t06-u01-7.1;Platz;50.92808;6.88794</pre>
 </div>
 </div>
 </div>
@@ -605,7 +609,7 @@ b03-t06-s02-0;null;50.936174;6.894329</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-05 06:11:40 +0100
+Last updated 2024-01-08 21:12:46 +0100
 </div>
 </div>
 </body>

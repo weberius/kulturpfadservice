@@ -31,17 +31,14 @@ public class RouteServiceForFeatureCollection {
      *
      * @throws RoutingNotAvailableException
      */
-    public RouteServiceForFeatureCollection() throws RoutingNotAvailableException {
-        this("data");
+    public RouteServiceForFeatureCollection() {
     }
 
     public RouteServiceForFeatureCollection(String id) throws RoutingNotAvailableException {
-        this(new PrepareRouting(id).getData());
+        calculateFeatureCollection(new PrepareRouting(id).getData());
     }
 
-    public RouteServiceForFeatureCollection(List<RoutingData> routingDataList) throws RoutingNotAvailableException {
-
-        // preparing for FeatureCollection
+    public void calculateFeatureCollection(List<RoutingData> routingDataList) {
         for (RoutingData routingData : routingDataList) {
             Feature feature = new Feature();
             // set line

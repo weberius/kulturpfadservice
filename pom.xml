@@ -12,7 +12,7 @@
 
 	<groupId>de.illilli</groupId>
 	<artifactId>kulturpfade</artifactId>
-	<version>0.0.11-SNAPSHOT</version>
+	<version>0.0.12-SNAPSHOT</version>
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
@@ -20,7 +20,10 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<download-osm.url>https://download.geofabrik.de</download-osm.url>
-		<download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
+		<!-- download-osm.fromFile>europe/germany/nordrhein-westfalen/duesseldorf-regbez-latest.osm.pbf</download-osm.fromFile -->
+		<!-- download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile -->
+		<download-osm.fromFile>europe/germany/nordrhein-westfalen-latest.osm.pbf</download-osm.fromFile>
+		<!-- download-osm.fromFile>europe/germany/hessen-latest.osm.pbf</download-osm.fromFile -->
 		<download-osm.toDir>${project.build.directory}/classes</download-osm.toDir>
 	</properties>
 	<dependencies>

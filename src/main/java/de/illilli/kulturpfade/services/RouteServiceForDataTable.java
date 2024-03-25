@@ -28,7 +28,11 @@ public class RouteServiceForDataTable {
         this(new PoiValuesRepository(id).find(), new PrepareRouting(id).getData());
     }
 
-    RouteServiceForDataTable(List<POI> poiList, List<RoutingData> routingDataList) throws RoutingNotAvailableException {
+    RouteServiceForDataTable(List<POI> poiList, List<RoutingData> routingDataList) {
+
+        if (routingDataList == null) {
+            return;
+        }
 
         int i = 0;
         int time = 0;
