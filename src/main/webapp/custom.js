@@ -65,6 +65,14 @@ function beforeMapLoads(){
         config.title = "Kulturpfade Köln - Lindenthal Pfad 6";
         config.start.center = [50.931234,6.894532];
         config.start.zoom = 15;
+    } else if (getURLParameter("id") == '06634005') {
+        config.title = "Fotopfad Fritzlar";
+        config.start.center = [51.131928,9.273232];
+        config.start.zoom = 17;
+    } else if (getURLParameter("id") == '06634009') {
+        config.title = "Fotopfad Homberg";
+        config.start.center = [51.033723,9.405627];
+        config.start.zoom = 17;
     } else {
         config.title = "Fotopfad Köln";
         config.start.center = [50.93551,6.953081];
