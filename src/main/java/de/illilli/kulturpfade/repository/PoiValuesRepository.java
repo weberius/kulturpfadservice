@@ -21,7 +21,7 @@ public class PoiValuesRepository implements JdbcRepository<POI> {
 
     public PoiValuesRepository(String id) {
         if (id == null || id.isEmpty()) {
-            this.data = "/data.csv";
+            this.data = "/muelheim.csv";
         } else {
             this.data = "/" + id + ".csv";
         }

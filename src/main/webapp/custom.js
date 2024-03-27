@@ -73,6 +73,14 @@ function beforeMapLoads(){
         config.title = "Fotopfad Homberg";
         config.start.center = [51.033723,9.405627];
         config.start.zoom = 17;
+    } else if (getURLParameter("id") == 'brunnentour') {
+        config.title = "Fotopfad Brunnentour";
+        config.start.center = [50.937994,6.959521];
+        config.start.zoom = 17;
+    } else if (getURLParameter("id") == 'muelheim') {
+        config.title = "Fotopfad Mülheim";
+        config.start.center = [50.96167,7.003527];
+        config.start.zoom = 16;
     } else {
         config.title = "Fotopfad Köln";
         config.start.center = [50.93551,6.953081];
