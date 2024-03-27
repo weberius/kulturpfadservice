@@ -5,7 +5,7 @@ var config = {
 	"title": "Kulturpfade Köln",
 	"start": {
 		// "maxZoom": 16,
-		"center": [50.941,6.958],
+		"center": [50.93551,6.953081],
 		"zoom": 13,
 		"attributionControl": true,
 		"zoomControl": false,
