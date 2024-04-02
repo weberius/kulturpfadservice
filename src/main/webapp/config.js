@@ -92,7 +92,7 @@ var config = {
         "showCoverageOnHover": false,
         "minZoom": 14,
         "url": "/service/poi/data.geojson",
-        "icon": {
+        ".": {
             "iconUrl": "./img/reddot.png",
             "iconSize": [18,18]
         },

@@ -175,7 +175,6 @@ function loadMap(){
       }
 
       if (layerType === "agsFeatureLayer") {
-
         // If the config file includes 'outFields', convert it to 'fields' - a simple listing of field names
         // which is required by the Esri-Leaflet API
         if (layerConfig.outFields !== undefined && layerConfig.outFields.length > 0) {
@@ -370,8 +369,6 @@ function loadMap(){
             if (jqXHR.layer.layerConfig.label !== undefined){
               createLabels(jqXHR.layer.layerConfig, data)
             }
-
-
           },
           error: function(jqXHR, textStatus, error) {
             $.growl.warning({ message: "There was a problem fetching the features for " + jqXHR.layerConfig.id});
@@ -1256,6 +1253,7 @@ function runQueryWidget() {
 
     if($("#chkQueryWithinMapExtent").is(':checked')) {
       queryData.inSr = 4326;
+      var bounds = bootleaf.map.getBounds();
       var bounds = bootleaf.map.getBounds();
       var geometry = {"xmin": bounds._southWest.lng,"ymin": bounds._southWest.lat,"xmax": bounds._northEast.lng,"ymax": bounds._northEast.lat,"spatialReference":{"wkid":4326}}
       queryData.geometry = JSON.stringify(geometry);

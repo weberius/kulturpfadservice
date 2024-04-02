@@ -44,13 +44,19 @@ public class PoiService {
             Map<String, Object> properties = new Hashtable<String, Object>();
             properties.put("id", poi.getId());
             String name = poi.getName();
+            String nr = "";
+            String nrname = "";
 
             if (poi.getId() != null && poi.getId().length() >= 15) {
                 int beginIndex = poi.getId().lastIndexOf("-") + 1;
-                name = poi.getId().substring(beginIndex) + " " + poi.getName();
+                nr = poi.getId().substring(beginIndex);
+                name = poi.getName();
+                nrname = nr + name;
             }
 
+            properties.put("nr", nr);
             properties.put("name", name);
+            properties.put("nrname", nrname);
             properties.put("type", "poi");
             feature.setProperties(properties);
             if (poi.getName() != null && !poi.getName().equalsIgnoreCase("null")) {

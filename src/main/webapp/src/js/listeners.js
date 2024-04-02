@@ -95,6 +95,25 @@ $("#legend-btn").click(function() {
   return false;
 });
 
+$("#poi-btn").click(function() {
+    // lade hier den Content
+    var id = getURLParameter("id");
+    fetch('html/html-fragment.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      }).then(htmlFragment => {
+        document.getElementById('poiModalContent').innerHTML = htmlFragment;
+      }).catch(error => {
+        console.error('Beim Abrufen des HTML-Fragments ist ein Fehler aufgetreten:', error);
+      });
+  $("#poiModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
 $("#identify-btn").click(function() {
   if ($(this).parent().hasClass('disabled')) { return null;}
   configureIdentifyTool();
