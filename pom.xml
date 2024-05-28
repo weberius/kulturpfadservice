@@ -12,7 +12,7 @@
 
 	<groupId>de.illilli</groupId>
 	<artifactId>kulturpfade</artifactId>
-	<version>0.0.20-SNAPSHOT</version>
+	<version>0.0.21-SNAPSHOT</version>
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
