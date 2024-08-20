@@ -41,7 +41,7 @@ public class RoutingService {
 
     String root = "/";
 
-    private GraphHopper hopper;
+    private static GraphHopper hopper;
     private List<RoutingData> data;
 
     public RoutingService() throws RoutingNotAvailableException {
@@ -74,18 +74,20 @@ public class RoutingService {
         // initialize Data
         data = new ArrayList<>();
         // start with graphhopper
-        hopper = new GraphHopper();
-        // set osm-File-Location
-        hopper.setOSMFile(osmFileLocation);
-        // specify where to store graphhopper files
-        hopper.setGraphHopperLocation(graphhopperLocation);
-        // see docs/core/profiles.md to learn more about profiles
-        Profile foot = new Profile(PROFILE).setVehicle(VEHICLE).setWeighting(WEIGHTING).setTurnCosts(TURNCOSTS);
-        hopper.setProfiles(foot);
-        // this enables speed mode for the profile we called car
-        hopper.getCHPreparationHandler().setCHProfiles(new CHProfile(PROFILE));
-        // now this can take minutes if it imports or a few seconds for loading of course this is dependent on the area you import
-        hopper.importOrLoad();
+        if (hopper == null) {
+            hopper = new GraphHopper();
+            // set osm-File-Location
+            hopper.setOSMFile(osmFileLocation);
+            // specify where to store graphhopper files
+            hopper.setGraphHopperLocation(graphhopperLocation);
+            // see docs/core/profiles.md to learn more about profiles
+            Profile foot = new Profile(PROFILE).setVehicle(VEHICLE).setWeighting(WEIGHTING).setTurnCosts(TURNCOSTS);
+            hopper.setProfiles(foot);
+            // this enables speed mode for the profile we called car
+            hopper.getCHPreparationHandler().setCHProfiles(new CHProfile(PROFILE));
+            // now this can take minutes if it imports or a few seconds for loading of course this is dependent on the area you import
+            hopper.importOrLoad();
+        }
 
     }
 
