@@ -177,18 +177,6 @@ var routes = L.geoJson(null, {
       opacity: 1,
       clickable: false
     };
-  },
-  onEachFeature: function (feature, layer) {
-    layer.on({
-       click: function (e) {
-         $("#feature-title").html("Entfernung");
-         $("#feature-info").html("Entfernung zur nächsten Sehenwürdigkeit: "
-            + feature.properties.distance
-            + "<br/> Voraussichtliche Dauer ohne Pause: "
-            + feature.properties.time);
-         $("#featureModal").modal("show");
-       }
-    });
   }
 });
 
