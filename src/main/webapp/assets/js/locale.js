@@ -53,14 +53,14 @@ function updateContent() {
     document.getElementById('poisPanelTitle').innerHTML = i18next.t('pois');
     document.getElementById('welcomeModelTitle').innerHTML = i18next.t('welcomeModelTitle');
 
-    new ModalBuilder().build('aboutTabsHeader', i18next.language);
-    new ModalBuilder().build('attributionModal', i18next.language);
-    new ModalBuilder().build('disclaimerModal', i18next.language);
-    new ModalBuilder().build('featuresModal', i18next.language);
-    new ModalBuilder().build('routModalBody', i18next.language);
-    new ModalBuilder().build('links', i18next.language);
-    new ModalBuilder().build('expectModal', i18next.language);
-    new ModalBuilder().build('aboutModal', i18next.language);
+    new ModalBuilder().loadMarkdown('aboutTabsHeader', i18next.language);
+    new ModalBuilder().loadMarkdown('attributionModal', i18next.language);
+    new ModalBuilder().loadMarkdown('disclaimerModal', i18next.language);
+    new ModalBuilder().loadMarkdown('featuresModal', i18next.language);
+    new ModalBuilder().loadMarkdown('routModalBody', i18next.language);
+    new ModalBuilder().loadMarkdown('links', i18next.language);
+    new ModalBuilder().loadMarkdown('expectModal', i18next.language);
+    new ModalBuilder().loadMarkdown('aboutModal', i18next.language);
 }
 
 /**
