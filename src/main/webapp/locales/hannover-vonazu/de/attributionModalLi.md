@@ -9,6 +9,7 @@ Tools und Frameworks
 * Formatierung von MarkDown-Fragmenten in HTML mit [marked.js]
 * Folgen der Route mit Hilfe von [Leaflet locateControl].
 * Marker clustering bei höheren Zoomleveln zur Erhöhung der Anzeigegeschwindigkeit mit [Leaflet marker cluster plugin].
+* zur Anzeige der x/y Daten wird [Leaflet Coordinates Control] eingesetzt.
 * Daten von [OpenStreetMap (OSM)]. Kartendarstellung durch OSM. OSM ist ein kollaboratives, Open-Source-Projekt zur Erstellung einer detaillierten und frei verfügbaren Weltkarte. Durch die aktive Beteiligung der globalen Mapper-Gemeinschaft bietet OSM flexible und umfangreiche geographische Daten, die in einer Vielzahl von Anwendungen genutzt werden können.</li>
 
 Entwicklung
@@ -23,5 +24,6 @@ Entwicklung
 [marked.js]: https://marked.js.org/
 [Leaflet locateControl]: https://github.com/domoritz/leaflet-locatecontrol
 [Leaflet marker cluster plugin]: https://github.com/Leaflet/Leaflet.markercluster
+[Leaflet Coordinates Control]: https://github.com/zimmicz/Leaflet-Coordinates-Control/blob/master/Control.Coordinates.js
 [OpenStreetMap (OSM)]: https://openstreetmap.org/
 [Wolfram Eberius]: https://weberius.github.io/

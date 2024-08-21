@@ -375,6 +375,18 @@ map.on("layerremove", updateAttribution);
 
 
 /**************************************************************************************************/
+// Leaflet Copy Coordinates Control
+/**************************************************************************************************/
+
+// you can send options to the constructor if you want to, otherwise default values are used
+var control = new L.Control.Coordinates();
+control.addTo(map);
+
+map.on('click', function(e) {
+	control.setCoordinates(e);
+});
+
+/**************************************************************************************************/
 // attributionControl
 /**************************************************************************************************/
 loadAttributionControl();
