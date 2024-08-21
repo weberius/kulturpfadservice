@@ -53,14 +53,15 @@ function updateContent() {
     document.getElementById('poisPanelTitle').innerHTML = i18next.t('pois');
     document.getElementById('welcomeModelTitle').innerHTML = i18next.t('welcomeModelTitle');
 
-    new ModalBuilder().loadMarkdown('aboutTabsHeader', i18next.language);
-    new ModalBuilder().loadMarkdown('attributionModal', i18next.language);
-    new ModalBuilder().loadMarkdown('disclaimerModal', i18next.language);
-    new ModalBuilder().loadMarkdown('featuresModal', i18next.language);
-    new ModalBuilder().loadMarkdown('routModalBody', i18next.language);
-    new ModalBuilder().loadMarkdown('links', i18next.language);
-    new ModalBuilder().loadMarkdown('expectModal', i18next.language);
-    new ModalBuilder().loadMarkdown('aboutModal', i18next.language);
+    new ModalBuilder().build('aboutTabsHeader', i18next.language);
+    new ModalBuilder().loadMarkdown('attributionModalLi', i18next.language);
+    new ModalBuilder().loadMarkdown('disclaimerModalLi', i18next.language);
+    new ModalBuilder().loadMarkdown('featuresModalLi', i18next.language);
+    new ModalBuilder().build('routModalBody', i18next.language);
+    new ModalBuilder().loadMarkdown('linksModalLi', i18next.language);
+    new ModalBuilder().loadMarkdown('expectModalLi', i18next.language);
+    new ModalBuilder().loadMarkdown('aboutModalLi', i18next.language);
+    new ModalBuilder().build('leaflet-control-attribution', i18next.language);
 }
 
 /**
