@@ -1,5 +1,5 @@
-var map, featureList;
-var urlroute, urlpoi;
+var map;
+let urlroute, urlpoi, featureList;
 
 // get namespace from urlParameter
 if (getURLParameter("id")) {
@@ -177,6 +177,18 @@ var routes = L.geoJson(null, {
       opacity: 1,
       clickable: false
     };
+  },
+  onEachFeature: function (feature, layer) {
+    layer.on({
+       click: function (e) {
+         $("#feature-title").html("Entfernung");
+         $("#feature-info").html("Entfernung zur nächsten Sehenwürdigkeit: "
+            + feature.properties.distance
+            + "<br/> Voraussichtliche Dauer ohne Pause: "
+            + feature.properties.time);
+         $("#featureModal").modal("show");
+       }
+    });
   }
 });
 
@@ -236,22 +248,19 @@ var pois = L.geoJson(null, {
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
 
-console.log('### POI LAYER ### ' + languageCode);
-
       var content = "";
-      var url = 'locales/' + namespace + '/' + languageCode + '/p' + feature.properties.nr + '.html';
+      var url = 'locales/' + namespace + '/' + languageCode + '/p' + feature.properties.nr + '.md';
 
-      fetch(url).then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text(); // Die Antwort als Text abrufen
-      }).then(htmlFragment => {
-        // Das HTML-Fragment in den DOM einfügen
-        content = htmlFragment;
-      }).catch(error => {
-        console.error('Beim Abrufen des HTML-Fragments ist ein Fehler aufgetreten:', error);
-      });
+     fetch(url).then(response => {
+         if (!response.ok) {
+             throw new Error('Network response was not ok');
+         }
+         return response.text(); // Die Antwort als Text abrufen
+     }).then(mdFragment => {
+        content = marked.parse(mdFragment);
+     }).catch(error => {
+         console.error('Beim Abrufen des MD-Fragments ist ein Fehler aufgetreten:', error);
+     });
 
       layer.on({
         click: function (e) {
@@ -350,6 +359,13 @@ map.on("click", function(e) {
   highlight.clearLayers();
 });
 
+
+var control = new L.Control.Coordinates();
+control.addTo(map);
+map.on('click', function(e) {
+	control.setCoordinates(e);
+});
+
 /* Attribution control */
 function updateAttribution(e) {
   $.each(map._layers, function(index, layer) {
@@ -361,18 +377,6 @@ function updateAttribution(e) {
 map.on("layeradd", updateAttribution);
 map.on("layerremove", updateAttribution);
 
-
-/**************************************************************************************************/
-// Leaflet Copy Coordinates Control
-/**************************************************************************************************/
-
-// you can send options to the constructor if you want to, otherwise default values are used
-var control = new L.Control.Coordinates();
-control.addTo(map);
-
-map.on('click', function(e) {
-	control.setCoordinates(e);
-});
 
 /**************************************************************************************************/
 // attributionControl
@@ -387,7 +391,7 @@ function loadAttributionControl() {
     attributionControl.onAdd = function (map) {
       var div = L.DomUtil.create("div", "leaflet-control-attribution");
 
-      var url = 'locales/' + namespace + '/' + languageCode + '/attributionControl.html';
+      var url = 'locales/' + namespace + '/' + browserLanguage + '/leaflet-control-attribution.html';
       fetch(url).then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -495,40 +499,6 @@ if (!L.Browser.touch) {
 // DOWNLOAD MENU
 /**************************************************************************************************/
 
-/**
-Checks for existence of an URL.
-After then it appends a new Download Childe
-*/
-class Downloader {
-
-    constructor(urlparameter) {
-        this.url = urlparameter.getUrl();
-        this.path = urlparameter.getPath();
-        this.id = urlparameter.getId();
-        this.type = urlparameter.getType();
-    }
-
-    buildDownload() {
-        fetch(this.url, {
-          method: 'HEAD' // Verwende die HEAD-Methode, um nur den Header abzurufen
-        }).then(response => {
-          if (response.ok) {
-            console.log('Elements for download initialized.');
-            var newLi, targetElement;
-            newLi = document.createElement('li');
-            newLi.innerHTML = '<a href="service/' + this.path + '/' + this.id + '.' + this.type + '" download="' + this.id + '.' + this.type + '" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;' + this.path + ' als ' + this.type + '</a>';
-            targetElement = document.getElementById('downloadDropUl');
-            targetElement.appendChild(newLi);
-          } else {
-            console.log('No data for download found.');
-          }
-        }).catch(error => {
-          console.error('Ein Fehler ist aufgetreten:', error);
-        });
-    }
-
-}
-
 /*
 This class constructs an url out of urlparameter and returns url, id, path, type
 */
@@ -583,9 +553,6 @@ class URLParameterPoi extends URLParameter {
     type = "geojson";
 }
 
-new Downloader(new URLParameterGPX()).buildDownload();
-new Downloader(new URLParameterPoi()).buildDownload();
-
 
 /**
 * Klasse, um html fragmente in Abhaengigkeit von der Sprache in den DOM-Tree einzufuegen.
@@ -606,10 +573,33 @@ class ModalBuilder {
          }).then(htmlFragment => {
              // Das HTML-Fragment in den DOM einfügen
              const element = document.getElementById(elementByid);
-             element.innerHTML = htmlFragment;
+             // in case of 'leaflet-*' element can be null
+             if (element) {
+                 element.innerHTML = htmlFragment;
+             }
          }).catch(error => {
              console.error('Beim Abrufen des HTML-Fragments ist ein Fehler aufgetreten:', error);
          });
      }
+
+     loadMarkdown(elementByid, languageCode) {
+
+            // Markdown-Datei abrufen
+            const url = 'locales/' + namespace + '/' + languageCode + '/' + elementByid + '.md';
+             fetch(url).then(response => {
+                 if (!response.ok) {
+                   throw new Error('Network response was not ok');
+                 }
+                 return response.text(); // Die Antwort als Text abrufen
+             }).then(mdFragment => {
+            const htmlFragment = marked.parse(mdFragment);
+            const element = document.getElementById(elementByid);
+            if (element) {
+                element.innerHTML = htmlFragment;
+            }
+         }).catch(error => {
+             console.error('Beim Abrufen des HTML-Fragments ist ein Fehler aufgetreten:', error);
+         });
+    }
 
 }
