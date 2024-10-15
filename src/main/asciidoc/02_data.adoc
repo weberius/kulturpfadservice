@@ -59,24 +59,47 @@ Wichtig ist hier, dass die Werte innerhalb der ID in der weiteren Verarbeitung v
 
 .Beispieldatensatz
 ----
-b03-t06-p01-6.1;Pauliplatz;50.93808;6.89794
-b03-t06-s01-0;null;50.939027;6.894951
-b03-t06-s02-0;null;50.936174;6.894329
-b03-t06-p02-6.2;St. Joseph;50.935715;6.898566
-b03-t06-s03-0;null;50.935525;6.894479
-b03-t06-s04-0;null;50.934525;6.889544
-b03-t06-p03-6.3;Am Morsdorfer Hof;50.935508;6.889726
-b03-t06-s05-0;null;50.937527;6.883428
-b03-t06-s06-0;null;50.934146;6.886303
-b03-t06-p04-6.4;Stadtwald;50.934416;6.896775
-b03-t06-p05-6.5;Heiligenhäuschen;50.9255224;6.8967102
-b03-t06-p06-6.6;St.-Elisabeth-Krankenhaus und -Kirche;50.924175;6.89748
-b03-t06-s07-0;null;50.924199;6.899865
-b03-t06-p07-6.7;Wohnhäuser von Konrad Adenauer;50.926789;6.899918
-b03-t06-s08-0;null;50.928053;6.901571
-b03-t06-p08-6.8;Kitschburg;50.926674;6.904746
-b03-t06-p09-6.9;Villa Meirowsky;50.932155;6.904891
+koeln-innenstadt-p01-1;Heinzelmännchenbrunnen;50.940007983370705;6.957310070072043
+koeln-innenstadt-u02-2;Unter Goldschmied;50.93915927;6.95810884
+koeln-innenstadt-u03-3;Theo Burauen Platz;50.93895138;6.95841998
+koeln-innenstadt-s04-2;Theo Burauen Platz;50.93895138;6.95841998
+koeln-innenstadt-u05-4;Römische Wasserleitung;50.93910674660413;6.958303544859174
+koeln-innenstadt-u06-5;Laurenzgittergäßchen;50.93912378;6.95863724
+koeln-innenstadt-u07-6;Praetorium;50.93902067;6.95895642
+koeln-innenstadt-u08-7;Rathaus;50.93799641;6.95930243
+koeln-innenstadt-u09-8;Altermarkt;50.93859475;6.96001858
+koeln-innenstadt-s10-3;Fischmarkt;50.93828375;6.96217239
+koeln-innenstadt-u10-9;Hänneschen-Theater am Eisenmarkt;50.93708368;6.96196318
+koeln-innenstadt-s11-4;Altermarkt;50.93668478;6.96149647
+koeln-innenstadt-u11-10;Reiterdenkmal Friedrich Wilhelm;50.93625883;6.96068645
+koeln-innenstadt-u12-11;Gürzenich;50.93651913;6.95844412
+koeln-innenstadt-s03-5;Gürzenich;50.93623516;6.95820272
+koeln-innenstadt-s03-10;null;50.93627742;6.95804179
+koeln-innenstadt-u12-12;Marsplatz, Marspfortengasse;50.93759583;6.95928901
+koeln-innenstadt-u13-13;Wallraf-Richartz Museum;50.93739976;6.95843875
+koeln-innenstadt-u14-14;Farina;50.93770062;6.95809275
+koeln-innenstadt-u15-15;Gülichplatz;50.93757723;6.95807129
+koeln-innenstadt-s15-6;Gülichplatz;50.93757723;6.95807129
+koeln-innenstadt-u16-16;Fastnachtsbrunnen;50.93757385;6.95795327
 ----
+
+Generell sollten die Sehenswürdigkeiten verwendet werden, um die Route zu berechnen. Es werden alle Sehenswürdigkeiten berücksichtigt, die in der csv-Datei mit 'p' markiert sind. Dabei kommt es immer häufiger zu Abweichungen zwischen Sehenswürdigkeit und Route, weil z.B. mehrere Sehenswürdigkeiten in unmittelbarer Nähe zueinander liegen, oder eine Sehenswürdigkeit nicht direkt an der Route liegen soll oder kann,
+
+Durch die Markierung der Sehenswürdigkeit mit 'u' in der csv-Datei, wird die entsprechende Sehenswürdigkeit nicht mehr ins Routing einbezogen. Zusätzlich ist es möglich unsichtbare Punkte durch die Markierung 's' in der csv-Datei zu definieren. Im Ergebnis wird ggf eine Route mit nicht sehr aussagefähigen Entfernungen aber richtiger gesamter Entfernung und Laufzeit ermittelt.
+
+In Zukunft soll das Konzept folgendermaßen geändert werden:
+
+|===
+|p|Punkte, die einen POI kennzeichnen|sie werden in das Routing einbezogen, aber auch auf der Oberfläche anzeigen
+|s|Punkte, die die Strecke kennzeichnen|sie werden nur angezeigt, wenn der Name nicht 'null' ist
+|u|Punkte, die einen POI kennzeichnen|sie werden nicht in das Routing einbezogen aber auf der Oberfläche angezeigt. Dies sollte der Normalfall für die Kennzeichnung von POI sein.
+|===
+- p: Punkte, die einen POI kennzeichnen; sie werden in das Routing einbezogen, aber auch auf der Oberfläche anzeigen
+- s: Punkte, die die Strecke kennzeichnen; sie werden nur angezeigt, wenn der Name nicht 'null' ist
+- u: Punkte, die einen POI kennzeichnen; sie werden nicht in das Routing einbezogen aber auf der Oberfläche angezeigt. Dies sollte der Normalfall für die Kennzeichnung von POI sein.
+
+Durch die Konzentration auf 'u' und 's' kann die Strecke vom POI getrennt werden. Die Berücksichtigung von 'p' erlaubt es rückwärtskompatibel zu bleiben. Eine eigene Nummerierung von 'u' und 's' Punkten bedeutet auch, dass de Darstellung auf der Oberfläche und die Darstellung der Route unabhängig voneinander nummeriert werden können.
+
 
 Generell sollen nur Points of Interest miteinander verbunden werden. Dies sind die Ankerpunkte der Route. Es ist aber ggf notwendig Stützpunkte hinzuzufügen, die die Route so anpassen, dass nicht der direkte Weg errechnet wird. Ankerpunkte sind dadurch gekennzeichnet, dass die id mit der Ordnungszahl des Kulturpfades endet, während Stützpunkte dadurch gekennzeichnet sind, dass sie den Prefix mit dem Ankerpunkt teilen, aber die Nummer mit dem 's' verbunden sind.
 
