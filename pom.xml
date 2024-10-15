@@ -12,7 +12,7 @@
 
 	<groupId>de.illilli</groupId>
 	<artifactId>kulturpfade</artifactId>
-	<version>0.0.21-SNAPSHOT</version>
+	<version>0.0.22-SNAPSHOT</version>
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
@@ -220,7 +220,15 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.0.6</version>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 </project>

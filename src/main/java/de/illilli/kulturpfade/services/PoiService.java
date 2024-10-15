@@ -1,8 +1,9 @@
 package de.illilli.kulturpfade.services;
 
-import de.illilli.kulturpfade.model.POI;
-import de.illilli.kulturpfade.repository.JdbcRepository;
-import de.illilli.kulturpfade.repository.PoiValuesRepository;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.LngLatAlt;
@@ -11,9 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import de.illilli.kulturpfade.model.POI;
+import de.illilli.kulturpfade.repository.JdbcRepository;
+import de.illilli.kulturpfade.repository.PoiValuesRepository;
 
 @Component
 public class PoiService {
@@ -56,11 +57,12 @@ public class PoiService {
             properties.put("nrname", nrname);
             properties.put("type", "poi");
             feature.setProperties(properties);
-            if (poi.getName() != null && !poi.getName().equalsIgnoreCase("null")) {
-                featureCollection.add(feature);
+            if (AnchorType.isAnchor(poi.getId()) || AnchorType.isUnanchored(poi.getId())) {
+                if (!"null".equals(poi.getName())) {
+                    featureCollection.add(feature);
+                }
             }
         }
-
     }
 
     public FeatureCollection getFeatureCollection() {
