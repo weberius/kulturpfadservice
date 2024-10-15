@@ -1,19 +1,24 @@
 koeln-innenstadt-p01-1;Heinzelmännchenbrunnen;50.940007983370705;6.957310070072043
-koeln-innenstadt-p02-2;Unter Goldschmied;50.93915927;6.95810884
+koeln-innenstadt-u02-2;Unter Goldschmied;50.93915927;6.95810884
 koeln-innenstadt-u03-3;Theo Burauen Platz;50.93895138;6.95841998
-koeln-innenstadt-u04-4;Römische Wasserleitung;50.93910674660413;6.958303544859174
-koeln-innenstadt-p05-5;Laurenzgittergäßchen;50.93912378;6.95863724
-koeln-innenstadt-u06-6;Praetorium;50.93902067;6.95895642
-koeln-innenstadt-u07-7;Rathaus;50.93799641;6.95930243
-koeln-innenstadt-u08-8;Altermarkt;50.93859475;6.96001858
-koeln-innenstadt-s02-8;null;50.93828375;6.96217239
-koeln-innenstadt-s03-8;null;50.93668478;6.96149647
-koeln-innenstadt-u10-10;Reiterdenkmal Friedrich Wilhelm;50.93625883;6.96068645
+koeln-innenstadt-s04-2;Theo Burauen Platz;50.93895138;6.95841998
+koeln-innenstadt-u05-4;Römische Wasserleitung;50.93910674660413;6.958303544859174
+koeln-innenstadt-u06-5;Laurenzgittergäßchen;50.93912378;6.95863724
+koeln-innenstadt-u07-6;Praetorium;50.93902067;6.95895642
+koeln-innenstadt-u08-7;Rathaus;50.93799641;6.95930243
+koeln-innenstadt-u09-8;Altermarkt;50.93859475;6.96001858
+koeln-innenstadt-s10-3;Fischmarkt;50.93828375;6.96217239
+koeln-innenstadt-u10-9;Hänneschen-Theater am Eisenmarkt;50.93708368;6.96196318
+koeln-innenstadt-s11-4;Altermarkt;50.93668478;6.96149647
+koeln-innenstadt-u11-10;Reiterdenkmal Friedrich Wilhelm;50.93625883;6.96068645
+koeln-innenstadt-u12-11;Gürzenich;50.93651913;6.95844412
+koeln-innenstadt-s03-5;Gürzenich;50.93623516;6.95820272
 koeln-innenstadt-s03-10;null;50.93627742;6.95804179
 koeln-innenstadt-u12-12;Marsplatz, Marspfortengasse;50.93759583;6.95928901
 koeln-innenstadt-u13-13;Wallraf-Richartz Museum;50.93739976;6.95843875
 koeln-innenstadt-u14-14;Farina;50.93770062;6.95809275
 koeln-innenstadt-u15-15;Gülichplatz;50.93757723;6.95807129
+koeln-innenstadt-s15-6;Gülichplatz;50.93757723;6.95807129
 koeln-innenstadt-u16-16;Fastnachtsbrunnen;50.93757385;6.95795327
 koeln-innenstadt-u17-17;St. Alban „trauernden Eltern“;50.93690620;6.95824832
 koeln-innenstadt-u18-18;Haus Neuerburg;50.93737778;6.95791841
@@ -22,27 +27,35 @@ koeln-innenstadt-u19-19;Frauenbrunnen;50.938047316348936;6.957743944413261
 koeln-innenstadt-u20-20;Jupp-Schmitz-Denkmal;50.93816374;6.95696890
 koeln-innenstadt-s04-4;null;50.93843080;6.95681065
 koeln-innenstadt-s05-4;null;50.93844770;6.95631713
+koeln-innenstadt-s06-7;Hohe Strasse;50.93844094;6.95629835
 koeln-innenstadt-u21-21;Kinetische Skulptur „Licht und Bewegung“;50.938543247385155;6.95632400869778
-koeln-innenstadt-p22-22;Modehaus Salomon - Modeunion;50.93805784184997;6.954864557247135
+koeln-innenstadt-u22-22;Modehaus Salomon - Modeunion;50.93805784184997;6.954864557247135
 koeln-innenstadt-u23-23;L.-Fritz-Gruber-Platz;50.938030255515976;6.9537145050820115
+koeln-innenstadt-s23-8;L.-Fritz-Gruber-Platz;50.93828206;6.95365906
 koeln-innenstadt-u24-24;Kolumba „Madonna in den Trümmern“;50.93841896;6.95411503
 koeln-innenstadt-u25-25;4711 Haus;50.93843925;6.95229650
-koeln-innenstadt-p26-26;Opernhaus - Vorplatz;50.93801916888327;6.952690599528424
-koeln-innenstadt-p27-27;Eistüte;50.93644330157765;6.948742004311043
+koeln-innenstadt-u26-26;Opernhaus - Vorplatz;50.93801916888327;6.952690599528424
+koeln-innenstadt-s26-9;Opernhaus - Vorplatz;50.93801916888327;6.952690599528424
+koeln-innenstadt-u27-27;Eistüte;50.93644330157765;6.948742004311043
+koeln-innenstadt-s27-10;Neumarkt;50.93644330157765;6.948742004311043
 koeln-innenstadt-u28-28;Neumarkt;50.93606364241153;6.947449284929868
-koeln-innenstadt-p29-29;Richmodis;50.936918065114924;6.947613959332573
-koeln-innenstadt-p30-30;Käthe Kollwitz Museum;50.93666548917232;6.9466878170250475
-koeln-innenstadt-u31-31;St. Aposteln - römische Stadtmauer;50.93660026;6.94499552
+koeln-innenstadt-u29-29;Richmodis;50.936918065114924;6.947613959332573
+koeln-innenstadt-u30-30;Käthe Kollwitz Museum;50.93666548917232;6.9466878170250475
+koeln-innenstadt-u31-31;St. Aposteln;50.93660026;6.94499552
 koeln-innenstadt-u32-32;Konrad-Adenauer-Denkmal;50.936736339244284;6.945106412346447
-koeln-innenstadt-p33-33;Gloria-Theater;50.93748427;6.94495261
-koeln-innenstadt-p34-34;Bäckerei Balkhausen;50.93830572;6.94494724
-koeln-innenstadt-p35-35;Bieresel;50.93888039;6.94618106
-koeln-innenstadt-p36-36;Breite Straße;50.938632635887856;6.945293390944173
-koeln-innenstadt-p37-37;DuMont-Brunnen;50.93894930375771;6.9483488577939525
-koeln-innenstadt-p38-38;Joseph DuMont;50.93891640735957;6.949471440852112
+koeln-innenstadt-s31-11;St. Aposteln;50.93695184;6.94512159
+koeln-innenstadt-u33-33;Gloria-Theater;50.93748427;6.94495261
+koeln-innenstadt-u34-34;Bäckerei Balkhausen;50.93830572;6.94494724
+koeln-innenstadt-u35-35;Bieresel;50.93888039;6.94618106
+koeln-innenstadt-u36-36;Breite Straße;50.938632635887856;6.945293390944173
+koeln-innenstadt-s36-12;Breite Straße;50.938632635887856;6.945293390944173
+koeln-innenstadt-u37-37;DuMont-Brunnen;50.93894930375771;6.9483488577939525
+koeln-innenstadt-u38-38;Joseph DuMont;50.93891640735957;6.949471440852112
 koeln-innenstadt-u39-39;Minoritenkirche (St. Mariä Empfängnis);50.93936547;6.95478827
-koeln-innenstadt-p40-40;Adolph-Kolping-Denkmal;50.93960209;6.95419550
+koeln-innenstadt-u40-40;Adolph-Kolping-Denkmal;50.93960209;6.95419550
+koeln-innenstadt-s40-13;Kolpingplatz;50.93960209;6.95419550
 koeln-innenstadt-u41-41;Kunstwerk „Relief II“;50.94025442655547;6.954367826505363
 koeln-innenstadt-u42-42;Museum für Angewandte Kunst Köln;50.93987928;6.95511281
-koeln-innenstadt-p43-43;Wallraf und Richartz Denkmal;50.94009934625886;6.9552128489690865
-koeln-innenstadt-p44-44;Funkhaus Wallrafplatz;50.94049449;6.95581824
+koeln-innenstadt-u43-43;Wallraf und Richartz Denkmal;50.94009934625886;6.9552128489690865
+koeln-innenstadt-u44-44;Funkhaus Wallrafplatz;50.94049449;6.95581824
+koeln-innenstadt-s44-14;Funkhaus Wallrafplatz;50.94049449;6.95581824

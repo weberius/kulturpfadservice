@@ -1,16 +1,16 @@
 package de.illilli.kulturpfade.services;
 
-import de.illilli.kulturpfade.model.RoutingData;
-import org.geojson.Feature;
-import org.geojson.FeatureCollection;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
+import org.geojson.Feature;
+import org.geojson.FeatureCollection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import de.illilli.kulturpfade.model.RoutingData;
 
 public class RouteServiceForFeatureCollectionIntegrationTest {
 

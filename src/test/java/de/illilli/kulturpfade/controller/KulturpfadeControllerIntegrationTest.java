@@ -1,7 +1,6 @@
 package de.illilli.kulturpfade.controller;
 
-import de.illilli.kulturpfade.services.PoiService;
-import org.junit.jupiter.api.Disabled;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,10 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import de.illilli.kulturpfade.services.PoiService;
 
 /**
  * Tests the api; empty '/data/data.geojson' is provieded in webapp-directory

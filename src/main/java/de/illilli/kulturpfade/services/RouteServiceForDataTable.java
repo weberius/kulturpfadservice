@@ -1,16 +1,17 @@
 package de.illilli.kulturpfade.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import de.illilli.kulturpfade.model.Culturalpath;
 import de.illilli.kulturpfade.model.POI;
 import de.illilli.kulturpfade.model.RoutingData;
 import de.illilli.kulturpfade.repository.JdbcRepository;
 import de.illilli.kulturpfade.repository.PoiValuesRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class RouteServiceForDataTable {
@@ -77,12 +78,24 @@ public class RouteServiceForDataTable {
                             && poi.getLng() == routingData.getToLon()) {
                         time = time + routingData.getTime();
                         distance = distance + routingData.getDistance();
+
+                        int hours = time / 60;
+                        int remainingMinutes = time % 60;
+                        timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
+                        int kilometers = distance / 1000;
+                        int remainingMeters = distance % 1000;
+                        distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
+
+                        Culturalpath path = new Culturalpath(poiId, name, timeStr, distanceStr);
+                        if (!"null".equals(poi.getName())) {
+                            this.data.add(path);
+                        }
                         break;
                     }
                 }
             } else if (AnchorType.isUnanchored(poiId)) {
                 Culturalpath path = new Culturalpath(poiId, name, "", "");
-                this.data.add(path);
+                //this.data.add(path);
             }
             i++;
         }
