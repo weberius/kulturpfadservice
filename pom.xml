@@ -134,7 +134,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- download OSM-Data -->
+			<!-- download OSM-Data
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>wagon-maven-plugin</artifactId>
@@ -155,6 +155,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
 			<!-- copy osm to test-classes -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
