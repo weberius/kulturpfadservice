@@ -1,6 +1,10 @@
 frankenberg-p27-1;Rathaus;51.05857408;8.80142212
 frankenberg-o34-34;Rathaus Kump;51.05867354;8.80146235
+frankenberg-o36-37;Bürgerhaus;51.05845775;8.80141139
 frankenberg-u28-2;Marktplatz;51.05890787;8.80137116
+frankenberg-o30-35;Altes Brauhaus;51.05893147;8.80147845
+frankenberg-o29-34;Stadtweinhaus;51.05921301;8.80142212
+frankenberg-o46-46;Bürgerhaus;51.05919615;8.80203366
 frankenberg-s27-27;null;51.05918097;8.80120754
 frankenberg-p25-3;Pfarrhof;51.05910680;8.79996568
 frankenberg-u06-4;Liebfrauenkirche;51.05875446;8.79957139
@@ -9,21 +13,25 @@ frankenberg-u09-6;Hospitalkirche;51.05774632;8.80007029
 frankenberg-u08-7;Stadtmauer;51.05780196;8.79877746
 frankenberg-s13-13;null;51.05765192;8.80024195
 frankenberg-s13-13;null;51.05813070;8.79820883
+frankenberg-o10-10;Alten- und Pflegeheim;51.05805989;8.79916638
 frankenberg-o05-5;Lateinschule;51.058902;8.798754
 frankenberg-u07-8;Frühere Mädchenschule;51.05820488;8.79852265
 frankenberg-u03-9;Burgberg;51.057895;8.797551
 frankenberg-u04-10;Gedenkstein;51.05768732;8.79710376
+frankenberg-o01-41;Teichmühle;51.05665893;8.79787624
+frankenberg-o02-42;Teichanlagen;51.056228;8.798135
 frankenberg-s13-13;null;51.05867354;8.79543811
 frankenberg-o15-4;Neustädter Tor;51.05794188;8.79485071
 frankenberg-p13-11;Kloster St. Georgenberg;51.0571183;8.7930603
 frankenberg-p14-12;Kloster St. Georgenberg;51.0575313;8.7925642
+frankenberg-o12-40;Kloster St. Georgenberg;51.05639592;8.79213631
 frankenberg-s14-14;null;51.05961086;8.79651904
 frankenberg-p33-13;Neustädter Rathaus;51.05945576;8.79673898
 frankenberg-o16-13;Pfeffermühle;51.05971369;8.79673898
 frankenberg-o50-14;Meyenhof (ehemals Hausnummer 491);51.06002387;8.79746854
+frankenberg-p38-14;Röddenauer Tor;51.06021437;8.79922271
 frankenberg-o17-15;Mühlentor;51.06065098;8.79900545
 frankenberg-o18-16;Niedermühle;51.06053804;8.79882306
-frankenberg-p38-14;Röddenauer Tor;51.06021437;8.79922271
 frankenberg-p39-15;Bürgerhaus;51.06022954;8.79976988
 frankenberg-p31-16;Bürgerhaus;51.05988733;8.80000591
 frankenberg-u32-17;Patrizierhaus;51.05939507;8.80026072
@@ -38,21 +46,13 @@ frankenberg-s22-22;null;51.06027506;8.80391657
 frankenberg-p23-23;Heidekirche;51.05913209;8.80442619
 frankenberg-p20-24;Hexenturm;51.05843247;8.80471319
 frankenberg-p26-25;Linner Tor; 51.05766203;8.80430281
+frankenberg-o24-27;Frühere Judenschule;51.05740915;8.80551517
 frankenberg-s26-28;null;51.05843078;8.80373418
 frankenberg-p49-26;Ehemalige Synagoge;51.05906803;8.80356252
-frankenberg-o24-27;Frühere Judenschule;51.05740915;8.80551517
-frankenberg-p48-28;Dilloffsches Haus;51.05859262;8.80171716
 frankenberg-o37-31;Steinhaus;51.05863140;8.80291611
-frankenberg-o29-34;Stadtweinhaus;51.05921301;8.80142212
-frankenberg-o30-35;Altes Brauhaus;51.05893147;8.80147845
 frankenberg-o35-36;Patrizierhaus;51.05856733;8.80277127
-frankenberg-o36-37;Bürgerhaus;51.05845775;8.80141139
-frankenberg-o12-40;Kloster St. Georgenberg;51.05639592;8.79213631
-frankenberg-o01-41;Teichmühle;51.05665893;8.79787624
+frankenberg-p48-28;Dilloffsches Haus;51.05859262;8.80171716
 frankenberg-o45-45;Teichpforte;51.05759291;8.80150259
-frankenberg-o02-42;Teichanlagen;51.056228;8.798135
-frankenberg-o10-10;Alten- und Pflegeheim;51.05805989;8.79916638
-frankenberg-o19-19;Alte Hütte;51.0735373;8.8146240
 frankenberg-o41-41;Früheres Krankenhaus;51.05765360;8.80325139
+frankenberg-o19-19;Alte Hütte;51.0735373;8.8146240
 frankenberg-o44-44;Totenhöhe - Schwedenstein;51.07309529;8.78508747
-frankenberg-o46-46;Bürgerhaus;51.05919615;8.80203366
