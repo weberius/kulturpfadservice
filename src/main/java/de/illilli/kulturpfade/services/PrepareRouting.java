@@ -27,6 +27,9 @@ public class PrepareRouting {
                 if (AnchorType.isUnanchored(beans.get(i).getId())) {
                     // intentionally left blank
                     // ignore POI
+                } else if (AnchorType.isOutOfRoute(beans.get(i).getId())) {
+                    // intentionally left blank
+                    // ignore POI
                 } else if (i == 0) {
                     fromPOI = beans.get(i);
                 } else {

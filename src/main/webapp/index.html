@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
   <link rel="stylesheet" href="assets/leaflet/leaflet.groupedlayercontrol.css">
   <link rel="stylesheet" href="assets/control.coordinates/Control.Coordinates.css"></link>
+  <link rel="stylesheet" href="assets/glightbox/glightbox.css" />
   <link rel="stylesheet" href="assets/css/app.css">
 
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
@@ -43,6 +44,7 @@
       <ul class="nav navbar-nav">
         <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="bi bi-arrows-fullscreen"></i>&nbsp;<span id="zoomSelectorSpan">Zoom</span></a></li>
         <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="bi bi-table"></i>&nbsp;<span id="routeSelectorSpan">Route</span></a></li>
+        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="gallery-btn"><i class="bi bi-images"></i>&nbsp;<span id="gallerySelectorSpan">Galerie</span></a></li>
         <li class="dropdown hidden-xs">
           <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="bi bi-cloud-download"></i>&nbsp;&nbsp;<span id="downloadSelectorSpan">Download</span> <b class="caret"></b></a>
           <ul class="dropdown-menu" id="downloadDropUl">
@@ -91,6 +93,27 @@
   </div>
   <div id="map"></div>
 </div>
+
+<div class="modal fade" id="galleryModalDiv" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><span id="galleryModalTitle">Galerie</span></h4>
+      </div>
+      <div class="galleryModalBody">
+        <!-- will be set after loading -->
+        <!-- Simple image -->
+        <a href="large.jpg" class="glightbox">
+          <img src="small.jpg" alt="image" />
+        </a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span id="closeBtn">Schliessen</span></button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <div class="modal fade" id="aboutModalDiv" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -199,8 +222,10 @@
 <script src="assets/i18next/i18nextHttpBackend.js"></script>
 <script src="assets/leaflet/leaflet.groupedlayercontrol.js"></script>
 <script src="assets/control.coordinates/Control.Coordinates.js"></script>
+<script src="assets/glightbox/glightbox.js"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/locale.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/gallery.js"></script>
 </body>
 </html>

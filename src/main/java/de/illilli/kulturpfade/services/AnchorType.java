@@ -6,12 +6,17 @@ import java.util.regex.Pattern;
 public class AnchorType {
 
     /**
-     * should cantain string "-u"; example: "b09-t01-u01-0.1"
+     * should cantain string "-u"; example: "stadt-u01-0.1"
      * @param input
      * @return
      */
     public static boolean isUnanchored(String input) {
         String regexPattern = ".*-u.*";
+        return matchesPattern(input, regexPattern);
+    }
+
+    public static boolean isOutOfRoute(String input) {
+        String regexPattern = ".*-o.*";
         return matchesPattern(input, regexPattern);
     }
 

@@ -39,7 +39,7 @@ public class RouteServiceForDataTable {
         int time = 0;
         int distance = 0;
 
-        String timeStr = String.format("%02d:%02d h", 0, 0);
+        String timeStr = String.format("%02d:%02d", 0, 0);
         String distanceStr = "" + String.format("%d,%03d km", 0, 0);
 
         for (POI poi : poiList) {
@@ -62,7 +62,7 @@ public class RouteServiceForDataTable {
 
                         int hours = time / 60;
                         int remainingMinutes = time % 60;
-                        timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
+                        timeStr = String.format("%02d:%02d", hours, remainingMinutes);
                         int kilometers = distance / 1000;
                         int remainingMeters = distance % 1000;
                         distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
@@ -81,7 +81,7 @@ public class RouteServiceForDataTable {
 
                         int hours = time / 60;
                         int remainingMinutes = time % 60;
-                        timeStr = String.format("%02d:%02d h", hours, remainingMinutes);
+                        timeStr = String.format("%02d:%02d", hours, remainingMinutes);
                         int kilometers = distance / 1000;
                         int remainingMeters = distance % 1000;
                         distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);

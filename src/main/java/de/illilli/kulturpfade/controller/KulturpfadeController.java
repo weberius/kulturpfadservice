@@ -2,10 +2,8 @@ package de.illilli.kulturpfade.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.illilli.kulturpfade.model.DataTable;
-import de.illilli.kulturpfade.services.PoiService;
-import de.illilli.kulturpfade.services.RouteServiceForDataTable;
-import de.illilli.kulturpfade.services.RouteServiceForFeatureCollection;
-import de.illilli.kulturpfade.services.RouteServiceForGPX;
+import de.illilli.kulturpfade.model.Gallery;
+import de.illilli.kulturpfade.services.*;
 import org.geojson.FeatureCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 @RestController
 @RequestMapping("/service")
@@ -83,6 +82,17 @@ public class KulturpfadeController {
 
         // return gpx file
         return new ResponseEntity(inputStreamResource, headers, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/gallery/{id}")
+    public String getGallery(@PathVariable String id) throws Exception {
+
+        // getting '<id>.josn'; need '<id>'
+        id = id.substring(0, id.indexOf('.'));
+
+        List<Gallery> galleryList = new GalleryService(id).getList();
+        return new ObjectMapper().writeValueAsString(galleryList);
 
     }
 

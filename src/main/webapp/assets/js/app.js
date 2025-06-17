@@ -132,11 +132,17 @@ function syncSidebar() {
   pois.eachLayer(function (layer) {
     if (map.hasLayer(poiLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
+        // show number only if part of track
+        const propsnr = (layer.feature.properties.point === "p") ? layer.feature.properties.nr : " "
         $("#feature-list tbody")
           .append('<tr class="feature-row" id="'
-            + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng
-            + '"><td style="vertical-align: middle;text-align: right" class="feature-nr">' + layer.feature.properties.nr + '</td><td class="feature-name">'
-            + layer.feature.properties.name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+            + L.stamp(layer) + '" lat="' + layer.getLatLng().lat
+            + '" lng="' + layer.getLatLng().lng
+            + '"><td style="vertical-align: middle;text-align: right" class="feature-nr">'
+            + propsnr
+            + '</td><td class="feature-name">'
+            + layer.feature.properties.name
+            + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -234,11 +240,14 @@ var poiLayer = L.geoJson(null);
 
 var pois = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
+    // If style is 0, show empty string, else show nr
+    const iconHtml = (feature.properties.point === "o") ? "" : feature.properties.nr;
+    const iconSize = (feature.properties.point === "o") ? [20, 20] : [40, 30];
     return L.marker(latlng, {
       icon: L.divIcon({
         className: 'red-tooltip',
-        html: '<div class="icon-container">' + feature.properties.nr + '</div>',
-        iconSize: [40, 30],
+        html: '<div class="icon-container">' + iconHtml + '</div>',
+        iconSize: iconSize,
         iconAnchor: [20, 10]
       }),
       title: feature.properties.nr,
@@ -249,41 +258,70 @@ var pois = L.geoJson(null, {
     if (feature.properties) {
 
       var content = "";
-      var url = 'locales/' + namespace + '/' + languageCode + '/p' + feature.properties.nr + '.md';
+      var url = 'locales/' + namespace + '/' + languageCode + '/p' + feature.properties.id + '.md';
 
-     fetch(url).then(response => {
-         if (!response.ok) {
-             throw new Error('Network response was not ok');
-         }
-         return response.text(); // Die Antwort als Text abrufen
-     }).then(mdFragment => {
+      fetch(url).then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      }).then(mdFragment => {
         content = marked.parse(mdFragment);
-     }).catch(error => {
-         console.error('Beim Abrufen des MD-Fragments ist ein Fehler aufgetreten:', error);
-     });
+      }).catch(error => {
+        console.error('Beim Abrufen des MD-Fragments ist ein Fehler aufgetreten:', error);
+      });
 
       layer.on({
         click: function (e) {
-          $("#feature-title").html(feature.properties.nr + ' ' + feature.properties.name);
+          const featureTitle =
+            (feature.properties.point === "p") | (feature.properties.point === "u") ?
+              feature.properties.nr + ' ' + feature.properties.name :
+              feature.properties.name;
+          $("#feature-title").html(featureTitle);
           $("#feature-info").html(content);
           $("#featureModal").modal("show");
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
         }
       });
+      // show number only if part of track
+      const propsnr = (layer.feature.properties.point === "p") ? layer.feature.properties.nr : " "
       $("#feature-list tbody")
         .append('<tr class="feature-row" id="'
-        + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng
-        + '"><td style="vertical-align: middle;">' + layer.feature.properties.nr + '</td><td class="feature-name">'
-        + layer.feature.properties.name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+          + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng
+          + '"><td style="vertical-align: middle;">'
+          + propsnr
+          + '</td><td class="feature-name">'
+          + layer.feature.properties.name
+          + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
 
-      var tooltipOptions = {
-        offset: [10, -50],
-        iconAnchor: [20, 10],
-        className: 'leaflet-tooltip'
-      };
-      layer.bindTooltip('<div class="leaflet-tooltip">'
-      + layer.feature.properties.name
-      + '</div>', tooltipOptions).openTooltip();
+      var tooltipOptions;
+      if (feature.properties.point === "p" | feature.properties.point === "u") {
+        tooltipOptions = {
+            offset: [10, 5], // Offset des Tooltips
+            direction: 'auto', // Kein Pfeil, Tooltip wird zentriert auf dem Marker.
+            opacity: 0.8, // Opazität des Tooltips
+            interactive: false, // Tooltip soll nicht interaktiv sein
+       }} else {
+        tooltipOptions = {
+            offset: [10, 0], // Offset des Tooltips
+            direction: 'auto', // Kein Pfeil, Tooltip wird zentriert auf dem Marker.
+            opacity: 0.7, // Opazität des Tooltips
+            interactive: false, // Tooltip soll nicht interaktiv sein
+       }};
+
+      layer.bindTooltip('<div>'
+        + layer.feature.properties.name
+        + '</div>',
+        tooltipOptions);
+
+      // Tooltip automatisch einblenden, wenn stark reingezoomt wird
+      map.on('zoomend', function() {
+        if (map.getZoom() >= 18) {
+          layer.openTooltip();
+        } else {
+          layer.closeTooltip();
+        }
+      });
 
     }
   }
@@ -459,11 +497,11 @@ var baseLayers = {
 };
 
 var groupedOverlays = {
-  "Sehenswürdigkeiten": {
-    "Sehenswürdigkeiten": poiLayer
+  "POI": {
+    "Points Of Interest": poiLayer
   },
-  "Kulturpfade": {
-    "Lindenthal": routes
+  "Route": {
+    "Route": routes
   }
 };
 

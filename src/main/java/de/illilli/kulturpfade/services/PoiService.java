@@ -43,24 +43,25 @@ public class PoiService {
             point.setCoordinates(element);
             feature.setGeometry(point);
             Map<String, Object> properties = new Hashtable<String, Object>();
-            properties.put("id", poi.getId());
-            String name = poi.getName();
-            String nr = "";
-            String nrname = "";
 
-            int beginIndex = poi.getId().lastIndexOf("-") + 1;
-            nr = poi.getId().substring(beginIndex);
-            nrname = nr + " " + name;
+            IdParser parser = new IdParser(poi.getId());
+            properties.put("id", parser.getId());
+            String name = poi.getName();
+            String nr = Integer.toString(parser.getNr());
+            String nrname = nr + " " + name;
 
             properties.put("nr", nr);
             properties.put("name", name);
             properties.put("nrname", nrname);
             properties.put("type", "poi");
+            properties.put("point", parser.getPoint());
+
             feature.setProperties(properties);
-            if (AnchorType.isAnchor(poi.getId()) || AnchorType.isUnanchored(poi.getId())) {
-                if (!"null".equals(poi.getName())) {
-                    featureCollection.add(feature);
-                }
+
+            if (AnchorType.isAnchor(poi.getId()) ||
+                    AnchorType.isUnanchored(poi.getId()) ||
+                    AnchorType.isOutOfRoute(poi.getId())) {
+                featureCollection.add(feature);
             }
         }
     }
