@@ -1,12 +1,15 @@
 korbach-p1-1;Rathaus mit Roland;51.272461;8.870966
 korbach-p2-2;Hartwigsches Haus mit Barockportal;51.271973;8.871645
+korbach-o29-29;Waldeccia;51.271583;8.872047
 korbach-p3-3;Wolfgang-Bonhage-Museum;51.271358;8.872356
 korbach-p4-4;St. Kilianskirche;51.271696;8.872715
 korbach-p5-5;Mönchehof;51.271670;8.873163
-korbach-p6-6;Marktplatz mit Pranger;51.271105;8.873582
-korbach-p7-7;Patrizierhaus von 1593;51.270303;8.873482
-korbach-p8-8;Spukhaus;51.270244;8.872753
-korbach-p9-9;Diemelsächsisches Bauernhaus;51.270365;8.873051
+korbach-s5-1;null;51.27049247;8.87430042
+korbach-s6-1;null;51.27028606;8.87375325
+korbach-u6-6;Marktplatz mit Pranger;51.271105;8.873582
+korbach-u7-7;Patrizierhaus von 1593;51.270303;8.873482
+korbach-u8-8;Spukhaus;51.270244;8.872753
+korbach-u9-9;Diemelsächsisches Bauernhaus;51.270365;8.873051
 korbach-u10-10;Enser Tor;51.269972;8.872018
 korbach-p11-11;Gotisches Lagerhaus;51.270528;8.872297
 korbach-p12-12;Stadtbefestigung im Schießhagen;51.270670;8.871511
@@ -17,7 +20,8 @@ korbach-u16-16;Feldhünerchenkump;51.272179;8.868477
 korbach-p17-17;Roter Turm;51.273147;8.867769
 korbach-p18-18;Bunsen-Haus;51.273500;8.868713
 korbach-u19-19;Wollweberturm;51.274253;8.869019
-korbach-p20-20;St. Nicolaikirche;51.273897;8.870028
+korbach-u20-20;St. Nicolaikirche;51.273897;8.870028
+korbach-s20-20;null;51.27502314;8.87053460
 korbach-p27-27;Berndorfer Torplatz;51.275771;8.871135
 korbach-p26-26;Der Nachtwächter;51.274016;8.871666
 korbach-u25-25;Klosterhof;51.273857;8.872839
@@ -26,3 +30,4 @@ korbach-p22-22;Stadtbücherei;51.272541;8.870223
 korbach-u24-24;Ehemaliges Gymnasium;51.273431;8.873439
 korbach-u28-28;St. Marienkirche;51.270840;8.866814
 korbach-u21-21;Obermarkt;51.272827;8.869859
+korbach-o30-30;Neustädter Stein;51.272441;8.870065
