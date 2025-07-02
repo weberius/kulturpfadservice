@@ -45,7 +45,7 @@ public class RouteServiceForDataTable {
         for (POI poi : poiList) {
             String poiId = poi.getId();
             int beginIndex = poi.getId().lastIndexOf("-") + 1;
-            String name = poi.getId().substring(beginIndex) + " " + poi.getName();
+            String name = poi.getName();
 
             if (i == 0) {
                 Culturalpath path = new Culturalpath(poiId, name, timeStr, distanceStr);

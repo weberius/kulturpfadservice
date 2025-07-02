@@ -139,7 +139,7 @@ function syncSidebar() {
             + L.stamp(layer) + '" lat="' + layer.getLatLng().lat
             + '" lng="' + layer.getLatLng().lng
             + '"><td style="vertical-align: middle;text-align: right" class="feature-nr">'
-            + propsnr
+            + '&nbsp;'
             + '</td><td class="feature-name">'
             + layer.feature.properties.name
             + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
@@ -157,10 +157,18 @@ function syncSidebar() {
 }
 
 /* Basemap Layers */
-var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+var osm = L.tileLayer("https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
+
+
+/* CartoDB */
+var cartodb = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap-Mitwirkende & CARTO'
+});
+
 
 /* Overlay Layers */
 var highlight = L.geoJson(null);
@@ -241,8 +249,10 @@ var poiLayer = L.geoJson(null);
 var pois = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
     // If style is 0, show empty string, else show nr
-    const iconHtml = (feature.properties.point === "o") ? "" : feature.properties.nr;
-    const iconSize = (feature.properties.point === "o") ? [20, 20] : [40, 30];
+//    const iconHtml = (feature.properties.point === "o") ? "" : feature.properties.nr;
+//    const iconSize = (feature.properties.point === "o") ? [20, 20] : [40, 30];
+    const iconHtml = "";
+    const iconSize = [20, 20];
     return L.marker(latlng, {
       icon: L.divIcon({
         className: 'red-tooltip',
@@ -273,10 +283,7 @@ var pois = L.geoJson(null, {
 
       layer.on({
         click: function (e) {
-          const featureTitle =
-            (feature.properties.point === "p") | (feature.properties.point === "u") ?
-              feature.properties.nr + ' ' + feature.properties.name :
-              feature.properties.name;
+          const featureTitle = feature.properties.name;
           $("#feature-title").html(featureTitle);
           $("#feature-info").html(content);
           $("#featureModal").modal("show");
@@ -289,25 +296,17 @@ var pois = L.geoJson(null, {
         .append('<tr class="feature-row" id="'
           + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng
           + '"><td style="vertical-align: middle;">'
-          + propsnr
+          + '&nbsp;'
           + '</td><td class="feature-name">'
           + layer.feature.properties.name
           + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
 
-      var tooltipOptions;
-      if (feature.properties.point === "p" | feature.properties.point === "u") {
-        tooltipOptions = {
-            offset: [10, 5], // Offset des Tooltips
-            direction: 'auto', // Kein Pfeil, Tooltip wird zentriert auf dem Marker.
-            opacity: 0.8, // Opazität des Tooltips
-            interactive: false, // Tooltip soll nicht interaktiv sein
-       }} else {
-        tooltipOptions = {
-            offset: [10, 0], // Offset des Tooltips
+      var tooltipOptions = {
+            offset: [15, 0], // Offset des Tooltips
             direction: 'auto', // Kein Pfeil, Tooltip wird zentriert auf dem Marker.
             opacity: 0.7, // Opazität des Tooltips
-            interactive: false, // Tooltip soll nicht interaktiv sein
-       }};
+            interactive: false // Tooltip soll nicht interaktiv sein
+      };
 
       layer.bindTooltip('<div>'
         + layer.feature.properties.name
@@ -367,7 +366,7 @@ function loadPoiLayer() {
 map = L.map("map", {
   zoom: 14,
   center: [50.944511,6.849597],
-  layers: [osm, routes, markerClusters, highlight],
+  layers: [cartodb, routes, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false
 });
@@ -493,7 +492,8 @@ if (document.body.clientWidth <= 767) {
 }
 
 var baseLayers = {
-  "Street Map": osm
+  "CartoDB": cartodb,
+  "OSM": osm
 };
 
 var groupedOverlays = {
