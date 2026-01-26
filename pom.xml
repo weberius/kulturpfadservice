@@ -16,10 +16,10 @@
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<geotools.version>33-SNAPSHOT</geotools.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<download-osm.url>https://download.geofabrik.de</download-osm.url>
 		<!-- download-osm.fromFile>europe/germany/nordrhein-westfalen/duesseldorf-regbez-latest.osm.pbf</download-osm.fromFile -->
 		<download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
@@ -244,8 +244,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+					<release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>

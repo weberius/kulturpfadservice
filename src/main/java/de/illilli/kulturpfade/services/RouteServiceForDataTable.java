@@ -39,8 +39,8 @@ public class RouteServiceForDataTable {
         int time = 0;
         int distance = 0;
 
-        String timeStr = String.format("%02d:%02d", 0, 0);
-        String distanceStr = "" + String.format("%d,%03d km", 0, 0);
+        String timeStr = "%02d:%02d".formatted(0, 0);
+        String distanceStr = "" + "%d,%03d km".formatted(0, 0);
 
         for (POI poi : poiList) {
             String poiId = poi.getId();
@@ -62,10 +62,10 @@ public class RouteServiceForDataTable {
 
                         int hours = time / 60;
                         int remainingMinutes = time % 60;
-                        timeStr = String.format("%02d:%02d", hours, remainingMinutes);
+                        timeStr = "%02d:%02d".formatted(hours, remainingMinutes);
                         int kilometers = distance / 1000;
                         int remainingMeters = distance % 1000;
-                        distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
+                        distanceStr = "" + "%d,%03d km".formatted(kilometers, remainingMeters);
 
                         Culturalpath path = new Culturalpath(poiId, name, timeStr, distanceStr);
                         this.data.add(path);
@@ -81,10 +81,10 @@ public class RouteServiceForDataTable {
 
                         int hours = time / 60;
                         int remainingMinutes = time % 60;
-                        timeStr = String.format("%02d:%02d", hours, remainingMinutes);
+                        timeStr = "%02d:%02d".formatted(hours, remainingMinutes);
                         int kilometers = distance / 1000;
                         int remainingMeters = distance % 1000;
-                        distanceStr = "" + String.format("%d,%03d km", kilometers, remainingMeters);
+                        distanceStr = "" + "%d,%03d km".formatted(kilometers, remainingMeters);
 
                         Culturalpath path = new Culturalpath(poiId, name, timeStr, distanceStr);
                         if (!"null".equals(poi.getName())) {

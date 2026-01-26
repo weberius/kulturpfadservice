@@ -18,7 +18,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -78,7 +78,7 @@ public class KulturpfadeController {
         InputStream inputStream = new FileInputStream(new File(filePath));
         InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentLength(Files.size(Paths.get(filePath)));
+        headers.setContentLength(Files.size(Path.of(filePath)));
 
         // return gpx file
         return new ResponseEntity(inputStreamResource, headers, HttpStatus.OK);
