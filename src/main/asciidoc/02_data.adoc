@@ -8,7 +8,14 @@ Es werden unterschiedliche Arten von Daten unterschieden:
 
 === OpenStreetMap Daten
 
-Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen. Das Kopieren erfolgt während des Bauens der Anwendung. Mit dem initialen Aufruf von `mvn clean install` wird ein Datenabzug heruntergeladen, der in der pom.xml definiert ist.
+Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen und sollten im Verzeichnis `osm` im Projekt-Root hinterlegt werden.
+
+Die OSM-Datei und die GraphHopper-Cache-Datenbank werden im `osm` Verzeichnis gespeichert und bleiben bei `mvn clean` erhalten. Dies ermöglicht schnellere Build-Zeiten, da die Datenbank nicht bei jedem Build neu erstellt werden muss.
+
+.Download und Einrichtung
+Die gewünschte OSM-Datei kann manuell von https://download.geofabrik.de heruntergeladen und in das `osm` Verzeichnis kopiert werden:
+
+  cp germany-latest.osm.pbf osm/
 
 .Beispiel Regierungsbezirk Köln
   <download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
@@ -19,8 +26,6 @@ Im angegebenen Beispiel werden die Daten für den Regierungsbezirk Köln herunte
   <download-osm.fromFile>europe/germany/hessen-latest.osm.pbf</download-osm.fromFile>
 
 Im Beispiel für Hessen wird ein Abzug für das Bundesland Hessen heruntergeladen.
-
-Wenn die Routing-Daten aktualisiert werden sollen, kann dies mit Hilfe von `mvn clean install` oder `mvn clean integration-test` erfolgen. `mvn clean` sorgt dabei dafür, dass das Arbeitsverzeichnis gelöscht wird. `mvn install` sorgt unter anderem dafür, dass frische Daten von der Geofabrik heruntergeladen werden.
 
 Auf der Seite _geofabrik.de/europe/germany_ <<geofabrik>> findet sich einen Auflistung, welche Daten von der Geofabrik bezogen werden können.
 

@@ -1,0 +1,3 @@
+# OSM-Dateien und GraphHopper-Cache ignorieren
+*.osm.pbf
+*-cache/

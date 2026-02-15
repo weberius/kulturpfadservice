@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -23,7 +21,7 @@ import java.util.Locale;
  * Der RoutingService erstellt auf Basis von zwei räumlichen Punkten
  * eine Fussgängernavigation auf Basis von OSM Datenmaterial und
  * mit Hilfe einer Graphopper Routing Engine. Hierfür wird unterstellt,
- * dass sich im classpath eine kompatible *.pbf - Datei befindet.
+ * dass sich im Verzeichnis /osm eine kompatible *.pbf - Datei befindet.
  * Befindet sie sich dort nicht, wird eine RoutingNotAvailabte Exception
  * geworfen. Befinden sich die angefragten Punkte ausserhalb des
  * verarbeitbaren Bereiches, wird ebenfalls eine RoutingNotAvailable Exception
@@ -39,36 +37,56 @@ public class RoutingService {
     public static boolean TURNCOSTS = false;
     public static Locale LOCALE = Locale.GERMAN;
 
-    String root = "/";
-
     private static GraphHopper hopper;
     private List<RoutingData> data;
 
+    private String osmDataDirectory;
+
+    /**
+     * Erstellt einen RoutingService mit dem Standard OSM-Verzeichnis "osm"
+     */
     public RoutingService() throws RoutingNotAvailableException {
+        this("osm");
+    }
+
+    /**
+     * Erstellt einen RoutingService mit einem spezifischen OSM-Verzeichnis
+     * @param osmDataDirectory Pfad zum OSM-Datenverzeichnis (relativ oder absolut)
+     */
+    public RoutingService(String osmDataDirectory) throws RoutingNotAvailableException {
+        this.osmDataDirectory = osmDataDirectory;
 
         String osmFileLocation = "";
         String graphhopperLocation = "";
 
         try {
-            URL url = this.getClass().getResource(root);
-            File[] files = new File(url.toURI()).listFiles();
+            // OSM-Verzeichnis im Projekt-Root verwenden
+            File osmDir = new File(osmDataDirectory);
+            if (!osmDir.exists()) {
+                throw new RoutingNotAvailableException("OSM data directory '" + osmDir.getAbsolutePath() + "' not found");
+            }
+            
+            File[] files = osmDir.listFiles();
+            if (files == null) {
+                throw new RoutingNotAvailableException("Cannot read OSM data directory '" + osmDir.getAbsolutePath() + "'");
+            }
+            
             for (File file : files) {
-//                System.out.println("### " + new File(root + file.getName()).getAbsolutePath());
-                if (file.isFile() && file.getName().contains(".osm.pbf")) {
-                    osmFileLocation =
-                            file.getParent()
-                                    + root
-                                    + file.getName();
-                    graphhopperLocation =
-                            file.getParent()
-                                    + root
-                                    + file.getName().substring(0, file.getName().length() - 8)
-                                    + "-cache";
-
+                if (file.isFile() && file.getName().endsWith(".osm.pbf")) {
+                    osmFileLocation = file.getAbsolutePath();
+                    graphhopperLocation = file.getParent()
+                            + File.separator
+                            + file.getName().substring(0, file.getName().length() - 8)
+                            + "-cache";
+                    break;
                 }
             }
-        } catch (NullPointerException | URISyntaxException e) {
-            throw new RoutingNotAvailableException("fileName '" + graphhopperLocation + "' not found");
+            
+            if (osmFileLocation.isEmpty()) {
+                throw new RoutingNotAvailableException("No .osm.pbf file found in directory '" + osmDir.getAbsolutePath() + "'");
+            }
+        } catch (NullPointerException e) {
+            throw new RoutingNotAvailableException("Error accessing OSM data directory: " + e.getMessage());
         }
 
         // initialize Data
