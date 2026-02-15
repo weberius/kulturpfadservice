@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.6</version>
+		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -16,17 +16,17 @@
 	<name>routingservice</name>
 	<description>Service for routing georeferenced points to a path for walking</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<geotools.version>33-SNAPSHOT</geotools.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<download-osm.url>https://download.geofabrik.de</download-osm.url>
 		<!-- download-osm.fromFile>europe/germany/nordrhein-westfalen/duesseldorf-regbez-latest.osm.pbf</download-osm.fromFile -->
 		<download-osm.fromFile>europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf</download-osm.fromFile>
 		<!-- download-osm.fromFile>europe/germany/nordrhein-westfalen-latest.osm.pbf</download-osm.fromFile -->
 		<!-- download-osm.fromFile>europe/germany/hessen-latest.osm.pbf</download-osm.fromFile -->
 		<!-- download-osm.fromFile>europe/germany/niedersachsen-latest.osm.pbf</download-osm.fromFile -->
-		<download-osm.toDir>${project.build.directory}/classes</download-osm.toDir>
+		<download-osm.toDir>${project.basedir}/osm</download-osm.toDir>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -134,6 +134,25 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Build GraphHopper Cache -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>build-graphhopper-cache</id>
+						<phase>process-test-classes</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>de.illilli.kulturpfade.BuildGraphHopperCache</mainClass>
+							<classpathScope>compile</classpathScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- download OSM-Data
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -156,32 +175,7 @@
 				</executions>
 			</plugin>
 			-->
-			<!-- copy osm to test-classes -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.3.1</version>
-				<executions>
-					<execution>
-						<id>copy-osm-to-test-classes</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>target/test-classes</outputDirectory>
-							<resources>
-								<resource>
-									<directory>target/classes</directory>
-									<includes>
-										<include>**/*.pbf</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- copy osm to test-classes - not needed anymore, using /osm directory directly -->
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
@@ -238,14 +232,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.0.6</version>
+				<version>3.5.0</version>
 			</plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+					<release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>

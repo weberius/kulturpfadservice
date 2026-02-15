@@ -462,7 +462,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_openstreetmap_daten">OpenStreetMap Daten</h3>
 <div class="paragraph">
-<p>Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen. Das Kopieren erfolgt während des Bauens der Anwendung. Mit dem initialen Aufruf von <code>mvn clean install</code> wird ein Datenabzug heruntergeladen, der in der pom.xml definiert ist.</p>
+<p>Die Applikation benutzt die Routing-Engine von Graphhopper. Hierfür ist es notwendig die passenden OSM-Daten zur Verfügung zu stellen. Sie werden vom Server der Geofabrik bezogen und sollten im Verzeichnis <code>osm</code> im Projekt-Root hinterlegt werden.</p>
+</div>
+<div class="paragraph">
+<p>Die OSM-Datei und die GraphHopper-Cache-Datenbank werden im <code>osm</code> Verzeichnis gespeichert und bleiben bei <code>mvn clean</code> erhalten. Dies ermöglicht schnellere Build-Zeiten, da die Datenbank nicht bei jedem Build neu erstellt werden muss.</p>
+</div>
+<div class="paragraph">
+<div class="title">Download und Einrichtung</div>
+<p>Die gewünschte OSM-Datei kann manuell von <a href="https://download.geofabrik.de" class="bare">https://download.geofabrik.de</a> heruntergeladen und in das <code>osm</code> Verzeichnis kopiert werden:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cp germany-latest.osm.pbf osm/</pre>
+</div>
 </div>
 <div class="literalblock">
 <div class="title">Beispiel Regierungsbezirk Köln</div>
@@ -481,9 +493,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph">
 <p>Im Beispiel für Hessen wird ein Abzug für das Bundesland Hessen heruntergeladen.</p>
-</div>
-<div class="paragraph">
-<p>Wenn die Routing-Daten aktualisiert werden sollen, kann dies mit Hilfe von <code>mvn clean install</code> oder <code>mvn clean integration-test</code> erfolgen. <code>mvn clean</code> sorgt dabei dafür, dass das Arbeitsverzeichnis gelöscht wird. <code>mvn install</code> sorgt unter anderem dafür, dass frische Daten von der Geofabrik heruntergeladen werden.</p>
 </div>
 <div class="paragraph">
 <p>Auf der Seite <em>geofabrik.de/europe/germany</em> <a href="#geofabrik">[geofabrik]</a> findet sich einen Auflistung, welche Daten von der Geofabrik bezogen werden können.</p>
@@ -663,7 +672,7 @@ b03-t06-u01-7.1;Platz;50.92808;6.88794</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-06-17 05:38:27 +0200
+Last updated 2026-02-15 08:45:33 +0100
 </div>
 </div>
 </body>

@@ -46,7 +46,7 @@ public class IdParser {
 
     @Override
     public String toString() {
-        return String.format("Location: %s, ID: %d, Nr: %d", location, id, nr);
+        return "Location: %s, ID: %d, Nr: %d".formatted(location, id, nr);
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 fritzlar-p01-1;Rathaus;51.13115178392963;9.273623654302666
 fritzlar-p02-2;Brüggemeier'sches Haus;51.13129305101849;9.27348735142091
-fritzlar-p03-3;Spitzenhäuschen;51.13148327153574;9.273470926060257
+fritzlar-u03-3;Spitzenhäuschen;51.13148327153574;9.273470926060257
 fritzlar-u04-4;Haus Lambert;51.131745158146956;9.273777392487744
 fritzlar-u05-5;Rolandsbrunnen;51.13179315813323;9.274385440900923
 fritzlar-u06-6;Haus Amato;51.13173104189353;9.274442419185634
@@ -9,31 +9,28 @@ fritzlar-u09-9;Haus Nägle;51.131924;9.274312
 fritzlar-u10-10;Haus Seibel;51.131868;9.273767
 fritzlar-u31-31;HNA-Haus;51.13183;9.27358
 fritzlar-p08-8;Kaufhäuschen;51.13183;9.27494
-fritzlar-p16-16;Gotische Steinhäuser;51.13231;9.27486
+fritzlar-u16-16;Gotische Steinhäuser;51.13231;9.27486
 fritzlar-p15-15;Haus Meyer;51.132468;9.274718
 fritzlar-s01-0;null;51.132668;9.273295
 fritzlar-s02-0;null;51.132405;9.272507
 fritzlar-p11-11;Hochzeitshaus;51.131628;9.272035
 fritzlar-p12-12;Haus Orth;51.13162;9.27168
-fritzlar-p13-13;Henkershaus;51.131505;9.269552
 fritzlar-p14-14;Grauer Turm;51.13183;9.26953
 fritzlar-p32-32;Hardehäuser Hof;51.13317;9.275223
 fritzlar-p17-17;Minoritenkirche;51.132017;9.277093
-fritzlar-p18-18;Deutschordenhaus;51.130423;9.278601
+fritzlar-u18-18;Deutschordenhaus;51.130423;9.278601
 fritzlar-p19-19;Haus Drissel;51.130699;9.276593
-fritzlar-p20-20;Haus Burk;51.130242;9.275593
+fritzlar-u20-20;Haus Burk;51.130242;9.275593
 fritzlar-p21-21;Ursulinenkloster - Ursulinenschule;51.129868;9.273365
-fritzlar-p22-22;Haus Mette;51.129745;9.272675
-fritzlar-s03-0;null;51.128247;9.272149
-fritzlar-s04-0;null;51.126906;9.271143
-fritzlar-p30-30;Siechenrasenkapelle;51.125894;9.267603
-fritzlar-p29-29;Heilig-Geist-Kapelle;51.128442;9.269076
-fritzlar-p33-33;Malerwinkel;51.128508;9.268936
-fritzlar-s05-0;null;51.130855;9.2689
-fritzlar-p23-23;Haus Volkers;51.13115;9.271508
-fritzlar-p00-0;Bonifatius-Denkmal;51.130864;9.2726
-fritzlar-p24-24;Stiftssaal;51.130702;9.272951
-fritzlar-p25-25;St. Petri Dom;51.130304;9.273397
-fritzlar-p26-26;Ehemaliges St. Josefsheim;51.131138;9.274233
+fritzlar-u22-22;Haus Mette;51.129745;9.272675
+fritzlar-o29-29;Heilig-Geist-Kapelle;51.128442;9.269076
+fritzlar-o33-33;Malerwinkel;51.128508;9.268936
+fritzlar-s02-0;null;51.13113120;9.27130222
+fritzlar-u23-23;Haus Volkers;51.13115;9.271508
+fritzlar-s02-0;null;51.13118506;9.27255213
+fritzlar-p34-34;Bonifatius-Denkmal;51.130864;9.2726
+fritzlar-o24-24;Stiftssaal;51.130702;9.272951
+fritzlar-p25-25;St. Petri Dom;51.13072218;9.27322805
+fritzlar-u26-26;Ehemaliges St. Josefsheim;51.131138;9.274233
 fritzlar-u27-27;Kurie in der Fischgasse;51.131306;9.274467
 fritzlar-u28-28;Fraumünsterkirch;51.130723;9.288643

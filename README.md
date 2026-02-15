@@ -17,13 +17,34 @@ Der Service soll eine einfache Weboberfläche enthalten, um das Ergebnis einfach
 
 ## Download, build, start
 
-Voraussetzung für die Ausführung des Services ist die Installation von `git`, `Java 17` und `Maven 3`. Der Service kann dann mit folgenden Befehlen auf der Kommandozeile heruntergeladen, gebaut und ausgeführt werden:
+Voraussetzung für die Ausführung des Services ist die Installation von `git`, `Java 21` und `Maven 3`. 
 
-  1. `git clone https://github.com/weberius/kulturpfadservice.git`
-  2. `mvn clean install`
-  3. `mvn spring-boot:run`
+### Einrichtung
 
-Der Prozess `mvn clean install` kann je nach Internetverbindung mehr als 5 Minuten dauern. Vor den Tests wird der aktuelle Abzug der OSM-Daten für den Regierungsbezirk Köln heruntergeladen. Mit Starten der Applikation (`mvn spring-boot:run`) steht auf localhost:8080 ein einfacher Service mit unterschiedlichen Schnittstellen zur Verfügung:
+1. Repository klonen:
+   ```bash
+   git clone https://github.com/weberius/kulturpfadservice.git
+   cd kulturpfadservice
+   ```
+
+2. OSM-Daten besorgen:
+   Die Anwendung benötigt OpenStreetMap-Daten im PBF-Format. Diese müssen im `osm` Verzeichnis abgelegt werden:
+   ```bash
+   # Beispiel für Regierungsbezirk Köln
+   wget -P osm/ https://download.geofabrik.de/europe/germany/nordrhein-westfalen/koeln-regbez-latest.osm.pbf
+   ```
+   
+   Weitere verfügbare Regionen finden Sie auf https://download.geofabrik.de/europe/germany.html
+
+3. Projekt bauen und starten:
+   ```bash
+   mvn clean install
+   mvn spring-boot:run
+   ```
+
+**Hinweis:** Die OSM-Datei und die GraphHopper-Cache-Datenbank werden im `osm` Verzeichnis gespeichert und bleiben bei `mvn clean` erhalten. Dies ermöglicht schnellere Build-Zeiten nach dem ersten Start.
+
+Mit Starten der Applikation (`mvn spring-boot:run`) steht auf localhost:8080 ein einfacher Service mit unterschiedlichen Schnittstellen zur Verfügung:
 
 * `http://localhost:8080/service/poi/<id>`
 * `http://localhost:8080/service/route/<id>`
