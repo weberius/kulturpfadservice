@@ -10,7 +10,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 
 Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem
 
-## Eine kurze Geschichte Fritzlars
+## Eine kurze Geschichte von Mülheim
 
 <audio controls class="full-width-audio">
   <source src="locales/koeln-muelheim/de/expect.mp3" type="audio/mpeg">
