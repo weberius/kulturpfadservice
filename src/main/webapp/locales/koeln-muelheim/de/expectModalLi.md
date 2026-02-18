@@ -17,10 +17,6 @@ Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming 
   Dein Browser unterstützt kein Audioelement.
 </audio>
 
-## Quellen
-
-- Wikipedia
-
 ## Hinweis
 
 _Die Inhalte wurden unter Einsatz von KI-Werkzeugen erstellt und sorgfältig überprüft. Vereinzelt können Unstimmigkeiten nicht ausgeschlossen werden._
