@@ -1,4 +1,4 @@
-# Jüdischer Friedhof und Jüdisches Leben in Mülheim
+# Jüdischer Friedhof
 
 Der jüdische Friedhof am Neurather Ring, ehemals als Am Springborn bekannt, stellt das älteste sichtbare Zeugnis jüdischer Kultur im heutigen Stadtgebiet von Köln-Mülheim dar. Die Anlage erstreckt sich über eine Fläche von 1741 Quadratmetern und beherbergt etwa 160 bis 165 erhaltene Grabsteine. Die Geschichte des Friedhofs ist eng mit der Entwicklung der Mülheimer jüdischen Gemeinde verknüpft, die bis zum Jahr 1698 ihre Toten auf dem alten Kölner Friedhof am Judenbüchel beisetzte, bevor sie den Deutzer Friedhof nutzte.
 
